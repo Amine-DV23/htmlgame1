@@ -1,0 +1,2368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      height: 100vh;
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 50px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 4px;
+      margin: 10px;
+    }
+
+    		#background {
+			background-image: url('bbgg.gif');
+			background-size: 3500px;
+			height: 880px;
+			width: 100%;
+			position: relative;
+			overflow: hidden;
+      border-color: black;
+		}
+
+		#coin9 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: 560px;
+      left: 100px;
+			width: 30px;
+			height: 20px;
+		}
+    #coin1 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: 560px;
+      left: 100px;
+			width: 30px;
+			height: 20px;
+      background-image: url('11.png');
+		}
+
+    #coin2 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: 560px;
+      left: 0px;
+			width: 56px;
+			height: 12px;
+      background-image: url('12.png');
+		}
+
+    
+    #coin4 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: 550px;
+      left: 90px;
+			width: 15px;
+			height: 15px;
+      background-image: url('13.png');
+		}
+
+    
+    #coin5 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 30px;
+			width: 30px;
+			height: 10px;
+      background-image: url('14.png');
+		}
+
+    
+    #coin6 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 90px;
+			width: 30px;
+			height: 20px;
+      background-image: url('15.png');
+		}
+
+    
+    #coin7 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('16.png');
+		}
+
+    
+      #player {
+      position: relative;
+      background-image: url('player1.gif');
+			bottom: 0px;
+			left: 100px;				
+			width: 80px;
+	    height: 100px;
+      transform: scaleX(1);
+      background-size: 100% 100%;
+
+        
+        }
+
+			/* Add these styles to create easing effect */
+			#player {
+			transition: bottom 5s ease-out;
+			}
+			#player9 {
+        position: relative;
+			bottom: 0px;
+			left: 100px;				
+			width: 80px;
+	    height: 100px;
+      transform: scaleX(1);
+      background-size: 100% 100%;
+			}
+			#moveLeftButton {
+			background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTvpzrRpQUYMzilRdYnpJv83gNLo4GIbWQihjaX_3vLAWyffQeynTV7XJ7HoeL59HzLrSh4PBdP9CEOqp4g1j-Kr9HT47bULpe2zj2Kl1rcrniz3xhYc02UiCakipkAQ4v1gdW_bwTjzxDeSUWZSPSMF3WQOCBeHSfpM4-Of2bUdaIVsoiSPfpHB8IUA/s1600/left.png');
+			background-size: contain;
+			background-color: transparent;
+			height: 50px;
+			width: 50px;
+			position: fixed;
+			bottom: 30px;
+			left: 30px;
+      border: none;
+
+			}
+
+			#moveRightButton {
+			background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4r5wdYqpnxtUxaFb0KfKffu93fpv9JwloRoIKzUPsD4HSGaOi0TSqn1uMVvL17hsce5oTO6p1InFUTSoI1O4jswFiwRreztFTPGmnvnAmQuZQ3vg374K7LZ0w89bwGNiRdxJD-Rfxskg-PD1hubInJuK1XoD5srmnAxxE2z8zg1CCYH2YGn3NaRggMw/s1600/right.png');
+			background-color: transparent;
+			height: 50px;
+			width: 50px;
+			position: fixed;
+			bottom: 30px;
+			right: 1110px;
+      border: none;
+
+			}
+
+			#jumpButton {
+			background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhY6lZbZwqjk3iDK2nT0Z7-Z6RsnJWVJbjPGHt1olLsh0tBAsd0SRobgGz6WBI0CW9gQz6TKVJdEnbkNK_XZU_elOv_Y_Cou3aTNV1gVhZxjqTDpaGqmZ7cQLdm0dnL24TdYhrKHUnAbbnS1MOMiS4AqcumGf8MICRHUG5sroMH6_2c1Y1jkab1HPx7Uw/s1600/up.png');
+			background-size: contain;
+			background-color: transparent;
+			height: 50px;
+			width: 50px;
+			position: fixed;
+			bottom: 80px;
+			left: 1200px;
+      border: none;
+
+			}
+
+			#fireButton {
+			background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJZGqMU2JRSWEtgzlOmZLQEFoRgsWfQoUpzvFg55nnrOPE9Xe6wL53n01fMxz4FDAbl-FXiaE8fK-WmrrC2lBPkCQuzLuX9QAVXUJ4MjGjhE1LeqWQK6mRZXX-typklQcnTcphVnpzUxVKlJwYzJv3T56eu7UMg32Fx53mWvi6ky5HByWwR5xwM8O_cA/s1600/x.png');
+			background-size: contain;
+			background-color: transparent;
+			height: 50px;
+			width: 50px;
+			position: fixed;
+			bottom: 30px;
+			right: 80px;
+      border: none;
+
+			}
+      #tireButton {
+			background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6mIZ5LVA5dtaRbpLXhGBu1N9oA_wFuQd2WWbRzxsEHqZizFdEOVL035xuiDY3kZEC4Ef2JTJt5Z9g7gvD4FbcJAecDe_EgNZodFZqb7E4n4w9zdMbtTrZrIw5ew12akexHIVZ2HfxXq5jwtGPHtGgNSBA6AxsZkBcBJo4GY8CKPlW-t_rXmhZvRNIkA/s1600/w.png');
+			background-size: contain;
+			background-color: transparent;
+			height: 50px;
+			width: 50px;
+			position: fixed;
+			bottom: 30px;
+			right: 140px;
+      border: none;
+
+			}
+
+      #sword {
+			background-color:rgb(211, 124, 43) ;		
+			height: 6px;
+			width: 15px;
+			position: absolute;
+			bottom: 59px;
+			left: 50px;
+			border-radius: 50%;
+			display: none;
+			}
+
+      #sword2 {
+        background-image: url('bll.png');
+        bottom: -25px;
+        left: 50px;
+
+			height: 30px;
+			width: 60px;
+			position: absolute;
+      background-size: 100% 100%;
+      border-radius: 50%;
+
+			}
+
+
+      #box {
+      background-color: transparent;	
+	  	height: 6px;
+			width: 15px;
+			position: absolute;
+			bottom: 59px;
+			left: 50px;
+			border-radius: 50%;
+			display: none;
+			}
+      #platform10 {
+background-color: transparent;
+        position: absolute;
+bottom: 0px;
+left: 0;
+width: 10000px;
+height: 60px;
+			} 
+
+      #platform0 {
+background-color: transparent;
+        position: absolute;
+bottom: 0px;
+left: 0;
+width: 10000px;
+height: 60px;
+			}
+
+
+      #platform {
+      bottom: 80px;
+      left: 1000px;
+      width: 300px;
+      height: 80px;
+      background-image: url('platform0.png');
+      position: absolute;
+      background-size: 100% 100%;
+
+      }
+      
+			#platform2 {
+
+position: absolute;
+background-color: transparent;
+background-size: cover;
+background-repeat: repeat;
+      bottom: 570px;
+      left: 750px;
+      width: 450px;
+      height: 60px;
+      }
+
+
+#platform4 {
+
+position: absolute;
+background-color: transparent;
+background-size: cover;	
+bottom: 700px;
+left: 2800px;
+width: 600px;
+height: 60px;
+background-size: 100% 100%;
+
+}
+
+
+#platform5 {
+
+position: absolute;
+background-image: url('platform5.png');
+
+background-size: cover;	
+bottom: 200px;
+left: 1500px;
+width: 400px;
+height: 60px;
+background-size: 100% 100%;
+
+}
+
+#platform6 {
+      position: absolute;
+      bottom: 80px;
+      left: 2000px;
+      width: 300px;
+      height: 80px;
+      background-image: url('platform0.png');
+      background-size: 100% 100%;
+
+    }
+
+    #platform7 {
+      position: absolute;
+      bottom: 80px;
+      left: 4300px;
+      width: 1000px;
+      height: 80px;
+      background-image: url('platform0.png');
+      background-size: 100% 100%;
+
+    }
+
+
+
+    
+
+
+
+    #enemy1 {
+        background-image: url('2.gif');
+				position: absolute;
+        bottom: 500px;
+        background-size: 100% 100%;
+
+				height: 80px;
+				width: 135px;
+        
+
+			}
+
+#enemy2 {
+       background-image: url('0.gif');
+       position: absolute;
+        height: 100px;
+        width: 120px;
+        background-size: 100% 100%;
+
+}
+
+
+
+
+      #enemy4 {
+        background-image: url('0.gif');
+				position: absolute;
+        
+        background-size: 100% 100%;
+
+				height: 100px;
+				width: 130px;
+    
+			}
+
+
+
+      #enemy5 {
+        background-image: url('5.gif');
+				position: absolute;
+        bottom: 500px;
+        background-size: 100% 100%;
+
+				height: 100px;
+				width: 130px;
+        
+
+			}
+
+      
+      #enemy6 {
+        background-image: url('000.gif');
+				position: relative;
+        bottom: 50px;
+        background-size: 100% 100%;
+right: 100px;;
+				height: 300px;
+				width: 100px;
+        
+
+			}
+
+
+
+      #enemy7 {
+       background-image: url('000.gif');
+       position: absolute;
+        height: 300px;
+        left: 200;
+        width: 100px;
+        background-size: 100% 100%;
+        bottom: 80px;
+
+
+
+}
+
+
+
+
+			#game-stats {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: transparent;
+			padding: 10px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			font-family: Arial, sans-serif;
+			}
+
+			#game-stats span {
+			margin: 0 30px;
+			color: #fafafa;
+
+			}
+
+			#game-stats span span {
+			font-weight: bold;
+			color: #08c408;
+
+			}
+
+
+			#game-over-box {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 450px;
+			height: 331px;
+      background-image: url('gmovr.gif');
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+      background-size: 100% 100%;
+
+			}
+
+			#game-over-box h2 {
+			color: white;
+			font-size: 30px;
+			margin-bottom: 10px;
+			}
+
+			#game-over-box p {
+			color: white;
+			font-size: 20px;
+			margin-bottom: 20px;
+			}
+
+			#score {
+			font-weight: bold;
+			}
+
+			#restart-button {
+			background-color: white;
+			color: red;
+			font-size: 20px;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+			}
+
+
+			h2 {
+			color: rgb(247, 248, 253);
+      border-color: coral;
+			font-weight: bold;
+			font-size: 48px;
+			animation: fade-out 8s forwards;
+			position: absolute;
+			top: calc(50% - 100px);
+			left: 50%;
+			transform: translate(-50%, -200px);
+			}
+
+			@keyframes fade-out {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					display: none;
+					}
+			}
+
+			#you-win-box  {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 300px;
+			height: 160px;
+			background-color: #4CAF50;
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+			}
+
+			#you-win-box h3 {
+			color: white;
+			font-size: 30px;
+			margin-bottom: 10px;
+			}
+
+			#you-win-box p {
+			color: white;
+			font-size: 20px;
+			margin-bottom: 20px;
+			}
+
+			#score {
+			font-weight: bold;
+			}
+
+			#next-button {
+			background-color: white;
+			color: red;
+			font-size: 20px;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+			}
+
+			h3 {
+			color: rgb(6, 11, 92);
+			font-weight: bold;
+			font-size: 48px;
+			animation: fade-out 8s forwards;
+			position: absolute;
+			top: calc(50% - 100px);
+			left: 50%;
+			transform: translate(-50%, -200px);
+			}
+
+			@keyframes fade-out {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					display: none;
+				}
+			}
+
+    .jump {
+  animation: jump 0.5s;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+.health-bar {
+  width: 70px;
+  height: 6px;
+  background-color: rgb(238, 255, 7);
+  transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+
+  </style>
+</head>
+<body>
+  <button class="button" style="order: 1;">زر يمين</button>
+  
+  <audio id="audio" autoplay loop="false">
+            <source src="game2.mp3" type="audio/mp3">
+            </audio>
+      
+                <div id="background">
+      
+      
+      
+                <h2>STAGE 01</h2>
+      
+      
+         
+      
+      
+      
+      
+                <div id="platform">
+      
+      
+      
+                  <div id="enemy1">
+      
+                    
+                  </div>
+      
+      
+                </div>
+        
+      
+                <div id="enemy2">
+                  <div id="sword2"></div>
+      
+                </div>
+      
+      
+                <div id="platform2">
+             
+                  
+                  <div id="coin2"></div>
+      
+                  <div id="coin1"></div>
+      
+        
+                </div>
+      
+      
+                <div id="platform4">
+                  <div id="coin4">
+      
+                  </div>
+                  <div id="enemy4">            
+                    <div id="sword2"></div>
+                </div>
+                </div>
+      
+      
+                <div id="platform5">
+                  
+                  <div id="coin5">
+      
+                  </div>
+                  <div id="enemy5"></div>
+                </div>
+      
+      
+                <div id="platform6">
+                  <div id="coin6">
+      
+                  </div>
+                </div>
+      
+      
+                <div id="platform7">
+                  <div id="coin7">
+      
+                  </div>
+                  <div id="enemy6">
+                    <div class="health-bar"></div>
+      
+      
+                  </div>
+                </div>
+      
+                
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+                  <div id="player">
+      
+                    <div id="sword"></div>
+                    <div id="box"></div> 
+                
+                  </div>
+      
+                  <img id="player9" src="player9.gif" style="display: none;">
+                  <img id="coin9" src="coin9.gif" style="display: none;">
+      
+          
+                  <div id="platform0">
+      
+                    <div id="enemy6"></div>
+        
+                  </div>
+      
+              
+      
+                  <button id="moveLeftButton"></button>
+                  <button id="moveRightButton"></button>
+                  <button id="jumpButton"></button>
+                  <button id="tireButton"></button>
+                  <button id="fireButton"></button>
+      
+                  <audio id="audio2" src="gn1.mp3"></audio>
+                  <audio id="audio3" src="box.mp3"></audio>
+                  <audio id="audio4" src="jump.mp3"></audio>
+      
+                  <audio id="audio5" src="mov.mp3"></audio>
+                  <audio id="audio6" src="mov.mp3"></audio>
+             
+      
+      
+                  <div id="game-over-box">
+                  <h2>Game Over</h2>
+                  <p>Your score is <span id="score"></span></p>
+                  <button id="restart-button">Restart</button>
+      
+      
+                </div>
+      
+                <div id="you-win-box">
+      
+                  <h3>you win</h3>
+      
+                  <p>Your score is <span id="score"></span></p>
+      
+                  <button id="next-button" onclick="goToPage02()">next</button>	
+      
+                    <script>
+      
+      
+      
+      
+                  function goToPage02() {
+                    location.href = 'Page02.html';
+                  }
+                    </script>
+      
+                </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+                <div id="game-stats">
+      
+      
+      
+      
+                  <span><img src="a1.PNG"> <span id="timer">30</span>Time : </span>
+      
+                  <span>Score coins<span id="coins-collected">0</span></span>
+      
+                  <span>Score<span id="enemies-killed">0</span></span>
+      
+      
+                  <span><span id="player-lives">3</span>PL:<img src="a2.PNG"></span>
+      
+      
+                </div>
+      
+      
+      
+      
+                <span id="lives">3</span>
+      
+      
+      
+      
+              </div> 
+  <button class="button" style="order: 2;">زر يسار</button>
+  <script type="text/javascript">
+
+
+    const audio2 = document.getElementById("audio2");
+    const audio3 = document.getElementById("audio3");
+    let isMouseDown2 = false;
+    let isMouseDown3 = false;
+    
+    const button2 = document.getElementById("fireButton");
+    const button3 = document.getElementById("tireButton");
+    
+    button2.addEventListener("mousedown", () => {
+      if (!isMouseDown2) {
+        audio2.currentTime = 0;
+        audio2.play();
+        intervalId = setInterval(() => {
+          audio2.currentTime = 0;
+          audio2.play();
+        }, audio2.duration * 1000);
+        isMouseDown2 = true;
+      }
+    });
+    
+    button2.addEventListener("mouseup", () => {
+      if (isMouseDown2) {
+        clearInterval(intervalId);
+        audio2.pause();
+        intervalId = null;
+        isMouseDown2 = false;
+      }
+    });
+    
+    button3.addEventListener("mousedown", () => {
+      if (!isMouseDown3) {
+        audio3.currentTime = 0;
+        audio3.play();
+        intervalId = setInterval(() => {
+          audio3.currentTime = 0;
+          audio3.play();
+        }, audio3.duration * 1000);
+        isMouseDown3 = true;
+      }
+    });
+    
+    button3.addEventListener("mouseup", () => {
+      if (isMouseDown3) {
+        clearInterval(intervalId);
+        audio3.pause();
+        intervalId = null;
+        isMouseDown3 = false;
+      }
+    });
+    
+    
+    
+    
+    
+    
+    const audio4 = document.getElementById("audio4");
+    const button4 = document.getElementById("jumpButton");
+    
+    
+    button4.addEventListener("click", () => {
+      audio4.currentTime = 0;
+      audio4.play();
+    });
+    
+    
+    
+    
+    const audio5 = document.getElementById("audio5");
+    let isMouseDown5 = false;
+    const button5 = document.getElementById("moveRightButton");
+    
+    button5.addEventListener("mousedown", () => {
+      if (!isMouseDown5) {
+        audio5.currentTime = 0;
+        audio5.play();
+        intervalId = setInterval(() => {
+          audio5.currentTime = 0;
+          audio5.play();
+        }, audio5.duration * 1000);
+        isMouseDown5 = true;
+      }
+    });
+    
+    button5.addEventListener("mouseup", () => {
+      if (isMouseDown5) {
+        clearInterval(intervalId);
+        audio5.pause();
+        intervalId = null;
+        isMouseDown5 = false;
+      }
+    });
+    
+    
+    const audio6 = document.getElementById("audio6");
+    let isMouseDown6 = false;
+    const button6 = document.getElementById("moveLeftButton");
+    
+    button6.addEventListener("mousedown", () => {
+      if (!isMouseDown6) {
+        audio6.currentTime = 0;
+        audio6.play();
+        intervalId = setInterval(() => {
+          audio6.currentTime = 0;
+          audio6.play();
+        }, audio6.duration * 1000);
+        isMouseDown6 = true;
+      }
+    });
+    
+    button6.addEventListener("mouseup", () => {
+      if (isMouseDown6) {
+        clearInterval(intervalId);
+        audio6.pause();
+        intervalId = null;
+        isMouseDown6 = false;
+      }
+    });
+    
+    
+    
+    
+    let coinsCollected = 0;
+    
+    
+    function updateCoinsCollected() {
+      coinsCollected++;
+      document.getElementById("coins-collected").textContent = coinsCollected;
+    }
+    
+    
+                      var player = document.getElementById("player");
+    
+    
+                      var currentPosition = 0;
+                      var cameraPosition = 0;
+                      var platform = document.getElementById("platform");
+                      var speed = 0;
+                      var screenWidth = window.innerWidth;
+    
+                      document.onkeydown = function(event) {
+                          if (event.keyCode == 39 && currentPosition < 150) { // يمينا
+                              currentPosition -= 2;
+                          } else if (event.keyCode == 37 && currentPosition > 150) { // يسارا
+                              currentPosition += 2;
+                          }
+                          platform.style.transform = "translateX(" + currentPosition + "px)"; // تحريك المنصة
+                          updateCamera(); // تحديث الكاميرا
+                      }
+    
+    
+    
+    7
+    
+                      var platform = document.getElementById("platform");
+                      var platform2 = document.getElementById("platform2");
+                      var platform4 = document.getElementById("platform4");
+                      var platform5 = document.getElementById("platform5");
+                      var platform6 = document.getElementById("platform6");
+                      var platform7 = document.getElementById("platform7");
+                      var platform0 = document.getElementById("platform0");
+    
+                      var coin1 = document.getElementById("coin1");
+                      var coin9 = document.getElementById("coin9");
+                      var coin4 = document.getElementById("coin4");
+                      var coin5 = document.getElementById("coin5");
+                      var coin6 = document.getElementById("coin6");
+                      var coin7 = document.getElementById("coin7");
+                      var coin2 = document.getElementById("coin2");
+                      var player = document.getElementById("player");
+    
+    
+                      let x = 0;
+                      let y = 0;
+                      let dx = 0;
+                      let dy = 0;
+                      let gravity = 0.5;
+                      let isJumping = false;
+                      let jumpSpeed = 20;
+    
+                      let moveLeftButton = document.getElementById("moveLeftButton");
+                      let moveRightButton = document.getElementById("moveRightButton");
+                      let jumpButton = document.getElementById("jumpButton");
+    
+                      moveLeftButton.addEventListener("mousedown", moveLeft);
+                      moveLeftButton.addEventListener("mouseup", stopMoving);
+    
+                      moveRightButton.addEventListener("mousedown", moveRight);
+                      moveRightButton.addEventListener("mouseup", stopMoving);
+    
+                      jumpButton.addEventListener("mousedown", jump);
+    
+    
+                      if(dx < 0){
+                          player.style.transform = "scaleX(-1)";
+                      } else if (dx > 0){
+                          player.style.transform = "scaleX(1)";
+                      }
+    
+                      function updateCamera() {
+                          cameraPosition -= dx * 0.2;
+                          if (cameraPosition < -2255) { // الحد الأيسر للحركة
+                              cameraPosition = -2255;
+                          }
+                          if (cameraPosition > 0) { // الحد الأيمن للحركة
+                              cameraPosition = 0;
+                          }
+                          
+                          document.getElementById("background").style.backgroundPosition = cameraPosition + "px";
+                          if (x < 300) { // لا تسمح بالتحرك خارج الشاشة على الجانب الأيسر
+                              x = 300;
+                          }
+                          if (x > 800) { // لا تسمح بالتحرك خارج الشاشة على الجانب الأيمن
+                              x = 800;
+                          }
+                          
+                          if (cameraPosition < -2255) { // إيقاف الكاميرا عند نهاية الصورة الخلفية
+                              cameraPosition = 0;
+                          }
+                          player.style.left = x + "px";
+                          player.style.bottom = y + "px";
+                      }
+    
+    
+                      setInterval(function() {
+                          updateCamera(); // تحديث الكاميرا بشكل مستمر
+                      }, 10);
+    
+    
+                          function jump() {
+                          if (!isJumping) {
+                              isJumping = true;
+                              dy = -15;
+                              player.style.backgroundImage = "url('player4.png')";
+                              setTimeout(function() {
+                                  player.style.backgroundImage = "url('player5.png')";
+                              }, 500);
+                              setTimeout(function() {
+                                  player.style.backgroundImage = "url('player1.gif')";
+                                  isJumping = false;
+                                  const audio = new Audio("jump.mp3"); // تحميل الصوت هنا
+                                  audio.play(); // تشغيل الصوت
+                              }, 1000);
+                          }
+                      }
+    
+    
+    
+    
+                      function moveLeft() {
+                          player.style.backgroundImage = "url('player3.gif')";
+                          dx = -3;
+                          isMovingLeft = true;
+                          isMovingRight = false;
+                          player.style.transform = "scaleX(-1)";
+                          updateCamera();
+                      }
+    
+    
+    
+    
+                      function moveRight() {
+                          player.style.backgroundImage = "url('player2.gif')";
+                          dx = 3;
+                          isMovingRight = true;
+                          isMovingLeft = false;
+                          player.style.transform = "scaleX(1)";
+                          updateCamera();
+                      }
+    
+                      function stopMoving() {
+                          dx = 0;
+                          player.style.backgroundImage = "url('player1.gif')";
+                      }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                      function gameLoop() {
+                          currentPosition -= dx;
+                          platform.style.transform = "translateX(" + currentPosition + "px)";
+                          platform2.style.transform = "translateX(" + currentPosition + "px)";
+                          platform4.style.transform = "translateX(" + currentPosition + "px)";
+                          platform5.style.transform = "translateX(" + currentPosition + "px)";
+                          platform6.style.transform = "translateX(" + currentPosition + "px)";
+                          platform7.style.transform = "translateX(" + currentPosition + "px)";
+                          platform0.style.transform = "translateX(" + currentPosition + "px)";
+                          updateCamera();
+                          setTimeout(gameLoop, 16);
+                      }
+                      gameLoop();
+    
+    
+                      document.addEventListener
+    
+    
+                        
+                        document.addEventListener("keydown", function(event) {
+                          if (event.code === "ArrowLeft") {
+                            moveLeft();
+                          } else if (event.code === "ArrowRight") {
+                            moveRight();
+                          } else if (event.code === "ArrowUp") {
+                            jump();
+                          }
+                        });
+                        
+                        document.addEventListener("keyup", function(event) {
+                          if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+                            stopMoving();
+                          }
+                        });
+                        
+                        document.addEventListener("keyup", function(event) {
+                          if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+                            stopMoving();
+                          }
+                        });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                        
+    
+                        
+                        const playerLives = document.getElementById("player-lives");
+    
+    
+                        var count = 120;
+            var timer = document.getElementById("timer");
+    
+            function updateTimer() {
+            timer.innerHTML = count;
+            count--;
+    
+            if (count < 0) {
+                clearInterval(intervalId);
+          const audio = new Audio("end.mp3"); // تحميل الصوت هنا
+          audio.play(); // تشغيل الصوت
+          player.style.display = "none";
+          enemy1.style.display = "none";
+          enemy2.style.display = "none";
+          enemy4.style.display = "none";
+          enemy5.style.display = "none";
+          enemy6.style.display = "none";
+          enemy7.style.display = "none";
+    
+                showGameOverBox();
+          stopAllAudio(); // إيقاف جميع الأصوات
+    
+    
+                timer.innerHTML = "Time's up!";
+                return;
+            }
+            }
+    
+            updateTimer(); // to update the timer immediately
+    
+            var intervalId = setInterval(updateTimer, 1000);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+            const enemiesKilled = document.getElementById("enemies-killed");
+            const gameTime = document.getElementById("game-time");
+    
+            let lives = 3;
+            let killed = 0;
+            let time = 0;
+    
+    
+    
+            lives--;
+            document.getElementById("lives").textContent = lives;
+    
+    
+            const gameOverBox = document.getElementById("game-over-box");
+            const restartButton = document.getElementById("restart-button");
+            const scoreSpan = document.getElementById("score");
+            const showGameOverBox = () => {
+            scoreSpan.textContent = killed;
+            gameOverBox.style.display = "block";
+            clearInterval(intervalId);
+            };
+            // restart game when restart button is clicked
+            restartButton.addEventListener("click", () => {
+            window.location.reload();
+            });
+    
+    
+            const youWinBox = document.getElementById("you-win-box");
+            const nextButton = document.getElementById("next-button");
+            const showYouWinBox = () => {
+            scoreSpan.textContent = killed;
+            youWinBox.style.display = "block";
+            clearInterval(intervalId);
+            };
+            // restart game when restart button is clicked
+            nextButton.addEventListener("click", () => {
+            window.location.href = "page02.html";
+            });
+    
+    
+            const enemy = document.getElementById("enemy");
+            let enemyVisible = false;
+            let timeSinceLastEnemy = 0;
+            const startGame = () => {
+            setInterval(() => {
+        
+            const playerX = player.getBoundingClientRect().x;
+            const playerY = player.getBoundingClientRect().y;
+            const enemyX = enemy.getBoundingClientRect().x;
+            const enemyY = enemy.getBoundingClientRect().y;
+    
+            const dx = playerX - enemyX;
+            const dy = playerY - enemyY;
+            let angle = Math.atan2(dy, dx);
+    
+            const vx = Math.cos(angle) * 5;
+            const vy = Math.sin(angle) * 5;
+    
+            if (enemyVisible) {
+            if (enemyX < playerX) {
+                angle += Math.PI; // تحويل زاوية حركة العدو بـ 180 درجة
+                enemy.style.transform = "scaleX(-1)"; // عكس الصورة
+            } else {
+                enemy.style.transform = "scaleX(1)"; // إرجاع الصورة الأصلية
+            }
+            enemy.style.left = `${enemy.offsetLeft + vx}px`;
+            enemy.style.top = `${enemy.offsetTop + vy}px`;
+            checkCollision();
+            timeSinceLastEnemy = 10;
+            } else {
+            timeSinceLastEnemy += 20;
+            if (timeSinceLastEnemy >= 120) {
+                resetEnemy(playerX, playerY);
+                enemyVisible = true;
+                }
+                }
+            }, 40);
+            }
+          function update() {
+                
+                // Update position
+            x += dx;
+            y += dy;
+            // Apply gravity
+            dy += gravity;
+            // Check for collision with bottom of screen
+            if (y + 50 > window.innerHeight) {
+              y = window.innerHeight - 50;
+              dy = 0;
+              isJumping = false;
+            }
+            // Check for collision with sides of screen
+            if (x < 0) {
+              x = 0;
+            }
+            if (x + 50 > window.innerWidth) {
+              x = window.innerWidth - 50;
+            }
+          
+            
+            let playerRect = player.getBoundingClientRect();
+    let platformRect = platform.getBoundingClientRect();
+    if (playerRect.bottom > platformRect.top && 
+        playerRect.top < platformRect.bottom && 
+        playerRect.right > platformRect.left && 
+        playerRect.left < platformRect.right) {
+      if (playerRect.bottom > platformRect.top && dy > 0) {
+        // Collision from top
+        y = platformRect.top - player.offsetHeight;
+        dy = 0; // Reverse vertical direction
+        isJumping = false; // Disable jumping
+      } else if (playerRect.top < platformRect.bottom && dy < 0) {
+    
+      } else if (playerRect.right > platformRect.left &&
+       dx > 0 && playerRect.left < platformRect.left) {
+        // Collision from left
+        x = platformRect.left - player.offsetWidth;
+        isJumping = false; // Disable jumping
+      } else if (playerRect.left < platformRect.right && dx < 0) {
+        // Collision from right
+        x = platformRect.right;
+        isJumping = false; // Disable jumping
+      }  }
+    
+    
+    
+    
+      let platform2Rect = platform2.getBoundingClientRect();
+    if (playerRect.bottom > platform2Rect.top && 
+        playerRect.top < platform2Rect.bottom &&
+        playerRect.right > platform2Rect.left && 
+        playerRect.left < platform2Rect.right) {
+      if (playerRect.bottom > platform2Rect.top && dy > 0) {
+        // Collision from top
+        y = platform2Rect.top - player.offsetHeight;
+        dy = 0; // Reverse vertical direction
+        isJumping = false; // Disable jumping
+      } else if (playerRect.top < platform2Rect.bottom && dy < 0) {
+    
+      } else if (playerRect.right > platform2Rect.left && dx > 0 &&
+                 playerRect.left < platform2Rect.left) {
+        // Collision from left
+        x = platform2Rect.left - player.offsetWidth;
+        isJumping = false; // Disable jumping
+      } else if (playerRect.left < platform2Rect.right && dx < 0) {
+        // Collision from right
+        x = platform2Rect.right;
+        isJumping = false; // Disable jumping
+      }  }
+    
+    
+    
+    
+    let platform4Rect = platform4.getBoundingClientRect();
+    if (playerRect.bottom > platform4Rect.top && 
+        playerRect.top < platform4Rect.bottom && 
+        playerRect.right > platform4Rect.left && 
+        playerRect.left < platform4Rect.right) {
+      if (playerRect.bottom > platform4Rect.top && dy > 0) {
+        // Collision from top
+        y = platform4Rect.top - player.offsetHeight;
+        dy = 0; // Reverse vertical direction
+        isJumping = false; // Disable jumping
+      } else if (playerRect.top < platform4Rect.bottom && dy < 0) {
+    
+      } else if (playerRect.right > platform4Rect.left &&
+       dx > 0 && playerRect.left < platform4Rect.left) {
+        // Collision from left
+        x = platform4Rect.left - player.offsetWidth;
+        isJumping = false; // Disable jumping
+      } else if (playerRect.left < platform4Rect.right && dx < 0) {
+        // Collision from right
+        x = platform4Rect.right;
+        isJumping = false; // Disable jumping
+      }  }
+    
+    
+          
+    
+    
+    let platform5Rect = platform5.getBoundingClientRect();
+    if (playerRect.bottom > platform5Rect.top && 
+        playerRect.top < platform5Rect.bottom && 
+        playerRect.right > platform5Rect.left && 
+        playerRect.left < platform5Rect.right) {
+      if (playerRect.bottom > platform5Rect.top && dy > 0) {
+        // Collision from top
+        y = platform5Rect.top - player.offsetHeight;
+        dy = 0; // Reverse vertical direction
+        isJumping = false; // Disable jumping
+      } else if (playerRect.top < platform5Rect.bottom && dy < 0) {
+    
+      } else if (playerRect.right > platform5Rect.left && dx > 0 && 
+                playerRect.left < platform5Rect.left) {
+        // Collision from left
+        x = platform5Rect.left - player.offsetWidth;
+        isJumping = false; // Disable jumping
+      } else if (playerRect.left < platform5Rect.right && dx < 0) {
+        // Collision from right
+        x = platform5Rect.right;
+        isJumping = false; // Disable jumping
+      }  }
+    
+    
+              
+    
+    
+      let platform6Rect = platform6.getBoundingClientRect();
+    if (playerRect.bottom > platform6Rect.top && 
+        playerRect.top < platform6Rect.bottom && 
+        playerRect.right > platform6Rect.left && 
+        playerRect.left < platform6Rect.right) {
+      if (playerRect.bottom > platform6Rect.top && dy > 0) {
+        // Collision from top
+        y = platform6Rect.top - player.offsetHeight;
+        dy = 0; // Reverse vertical direction
+        isJumping = false; // Disable jumping
+      } else if (playerRect.top < platform6Rect.bottom && dy < 0) {
+    
+      } else if (playerRect.right > platform6Rect.left && dx > 0 && 
+                playerRect.left < platform6Rect.left) {
+        // Collision from left
+        x = platform6Rect.left - player.offsetWidth;
+        isJumping = false; // Disable jumping
+      } else if (playerRect.left < platform6Rect.right && dx < 0) {
+        // Collision from right
+        x = platform6Rect.right;
+        isJumping = false; // Disable jumping
+      }  }
+       
+    
+    
+      let platform7Rect = platform7.getBoundingClientRect();
+    if (playerRect.bottom > platform7Rect.top && 
+        playerRect.top < platform7Rect.bottom && 
+        playerRect.right > platform7Rect.left && 
+        playerRect.left < platform7Rect.right) {
+      if (playerRect.bottom > platform7Rect.top && dy > 0) {
+        // Collision from top
+        y = platform7Rect.top - player.offsetHeight;
+        dy = 0; // Reverse vertical direction
+        isJumping = false; // Disable jumping
+      } else if (playerRect.top < platform7Rect.bottom && dy < 0) {
+    
+      } else if (playerRect.right > platform7Rect.left && dx > 0 && 
+                playerRect.left < platform7Rect.left) {
+        // Collision from left
+        x = platform7Rect.left - player.offsetWidth;
+        isJumping = false; // Disable jumping
+      } else if (playerRect.left < platform7Rect.right && dx < 0) {
+        // Collision from right
+        x = platform7Rect.right;
+        isJumping = false; // Disable jumping
+      }  }
+       
+    
+    
+    
+    
+      let platform0Rect = platform0.getBoundingClientRect();
+    if (playerRect.bottom > platform0Rect.top && 
+        playerRect.top < platform0Rect.bottom &&
+        playerRect.right > platform0Rect.left && 
+        playerRect.left < platform0Rect.right) {
+      if (playerRect.bottom > platform0Rect.top && dy > 0) {
+        // Collision from top
+        y = platform0Rect.top - player.offsetHeight;
+        dy = 60; // Reverse vertical direction
+        isJumping = false; // Disable jumping
+      } else if (playerRect.top < platform0Rect.bottom && dy < 0) {
+        // Collision from bottom
+        isJumping = false; // Disable jumping
+      } else if (playerRect.right > platform0Rect.left && dx > 0 && playerRect.left < platform0Rect.left) {
+        // Collision from left
+        x = platform0Rect.left - player.offsetWidth;
+        isJumping = false; // Disable jumping
+      } else if (playerRect.left < platform0Rect.right && dx < 0) {
+    
+      }  }
+    
+    
+    
+      
+            // Update player position
+            player.style.left = x + "px";
+            player.style.top = y + "px";
+            // Schedule next update
+            requestAnimationFrame(update);
+          }
+          
+          
+                    update();
+    
+    
+                    var sword2Speed = 1;
+    
+                    var player = document.getElementById("player");
+            var enemy2 = document.getElementById("enemy2");
+            var sword2 = document.getElementById("sword2");
+            var sword2X = 0;
+            var sword2Y = 0;
+            var enemy2X = 0;
+            var direction = "right";
+            var chasing = false;
+            var playerWidth = player.offsetWidth;
+            function moveEnemy2() {
+      if (!chasing) {
+        // Move enemy2 randomly left or right
+        if (direction === "right") {
+          enemy2X += 3;
+          if (enemy2X + enemy2.offsetWidth > window.innerWidth) {
+            direction = "left";
+          }
+        } else {
+          enemy2X -= 3;
+          if (enemy2X < 0) {
+            direction = "right";
+          }
+        }
+        enemy2.style.left = enemy2X + "px";
+    
+        // Check if enemy2 is close enough to start chasing
+        if (Math.abs(player.offsetLeft - enemy2.offsetLeft) < 50000) {
+          chasing = true;
+        }
+      } else {
+        // Chase the player
+        if (enemy2.offsetLeft < player.offsetLeft) {
+          enemy2X += 3;
+        } else {
+          enemy2X -= 3;
+        }
+        enemy2.style.left = enemy2X + "px";
+    
+        // Check if enemy2 is close enough to attack
+        if (Math.abs(player.offsetLeft - enemy2.offsetLeft) < 2) {
+          // Attack the player
+          sword2X = enemy2.offsetLeft + enemy2.offsetWidth / 2 - sword2.offsetWidth / 0;
+          sword2Y = enemy2.offsetTop + enemy2.offsetHeight;
+          sword2.style.left = sword2X + "px";
+          sword2.style.top = sword2Y + "px";
+          sword2.style.transform = "rotate(0deg)";
+    
+          sword2.style.display = "block";
+          var sword2Interval = setInterval(function() {
+            sword2Y += 1.5;
+            sword2.style.top = sword2Y + "px";
+    
+            // Check if sword2 hit the player
+            if (Math.abs(player.offsetLeft - sword2X) < playerWidth && sword2Y > window.innerHeight - player.offsetHeight) {
+              clearInterval(sword2Interval);
+              sword2.style.display = "none";
+              chasing = false;
+              player.style.display = "none"; // إخفاء اللاعب
+              sword2.style.display = "none"; // إخفاء السيف
+            }
+    
+            // Check if sword2 hit the ground
+            if (sword2Y > window.innerHeight) {
+              clearInterval(sword2Interval);
+              sword2.style.display = "none";
+            }
+          }, 0.5);
+        }
+      }
+    }
+    
+    setInterval(moveEnemy2, 20);
+    
+    
+    const enemies = document.querySelectorAll("#enemy1, #enemy2, #enemy3, #enemy4, #enemy5, #enemy6");
+    const sword = document.getElementById("sword");
+    const maxSwordHits = 200; // عدد السيوف المطلوبة لقتل العدو
+    
+    let score = 0;
+    
+    const checkCollision = () => {
+      enemies.forEach(enemy => {
+        const swordRect = sword.getBoundingClientRect();
+        const enemyRect = enemy.getBoundingClientRect();
+        const healthBar = enemy.querySelector(".health-bar");
+        const hits = enemy.dataset.hits || 0; // عدد السيوف التي تم اصطدامها بالفعل
+    
+        if (
+          swordRect.top <= enemyRect.bottom &&
+          swordRect.bottom >= enemyRect.top &&
+          swordRect.left <= enemyRect.right &&
+          swordRect.right >= enemyRect.left
+        ) {
+          if (hits < maxSwordHits) {
+            enemy.dataset.hits = parseInt(hits) + 1; // زيادة عدد السيوف التي تم اصطدامها
+            const percent = Math.round((hits / maxSwordHits) * 100); // حساب النسبة المئوية للصحة المتبقية
+            const increase = 100 / maxSwordHits; // حساب النسبة المئوية للزيادة في العرض
+            const newWidth = Math.round(percent * increase); // حساب العرض الجديد بناءً على النسبة المئوية والزيادة
+            healthBar.style.width = `${newWidth}%`; // تحديث عرض الشريط
+    
+            if (percent < 50) {
+              healthBar.style.backgroundColor = "red"; // تغيير لون الخلفية إلى الأصفر إذا انخفضت الصحة إلى أقل من 50%
+            }
+    
+            if (percent < 25) {
+              let redness = (25 - percent) * 2.55; // حساب درجة اللون الأحمر بناءً على النسبة المئوية
+              let yellowness = 255 - redness; // حساب درجة اللون الأصفر بناءً على اللون الأحمر
+              healthBar.style.backgroundColor = `rgb(${redness}, ${yellowness}, 0)`; // تحديث لون الخلفية بالألوان المحسوبة
+            }
+          } else {
+            enemy.style.display = "none"; // إخفاء العدو بمجرد الانتهاء من عدد السيوف المطلوبة
+            const audio = new Audio("dino1.mp3"); // تحميل الص
+    // تحميل الصوت هنا
+            audio.play(); // تشغيل الصوت
+            score++;
+            scoreElement.innerHTML = `enemies-killed: ${score}`;
+            if (score >= 1) { // إذا تم قتل العدوين
+              showYouWinBox(); // إظهار صندوق الانتهاء من اللعبة
+              stopAllAudio();// إيقاف جميع الأصوات
+            }
+          }
+        }
+      });
+    };
+    
+    const scoreElement = document.getElementById("enemies-killed");
+    scoreElement.innerHTML = `enemies-killed: ${score}`;
+    
+    player.addEventListener("click", () => {
+      fireSword();
+    });
+    
+    
+    
+    setInterval(function() {
+        let swordLeft = parseInt(window.getComputedStyle(sword).getPropertyValue("left"));
+        let swordTop = parseInt(window.getComputedStyle(sword).getPropertyValue("top"));
+        let enemy6Left = parseInt(window.getComputedStyle(enemy6).getPropertyValue("left"));
+        let enemy6Top = parseInt(window.getComputedStyle(enemy6).getPropertyValue("top"));
+        let enemy6Bottom = enemy6Top + enemy6.offsetHeight;
+    
+        if (enemy6Left < (swordLeft + sword.offsetWidth) && enemy6Left + enemy6.offsetWidth > swordLeft && enemy6Bottom > swordTop) {
+            // enemy6 collided with sword
+            enemy6.style.backgroundImage = "url('44.gif')"; // تعيين صورة اللون البرتقالي كخلفية للعدو
+            setTimeout(function() {
+              const audio = new Audio("dino2.mp3"); 
+    
+    audio.play();
+    stopAllAudio();
+                enemy6.style.backgroundImage = "url('45.gif')"; // تعيين صورة اللون الأحمر كخلفية للعدو
+            }, 1);
+        }
+    }, 1);
+    
+    
+    
+    
+    
+    
+    const box = document.getElementById("box");
+    
+    const checkCollision2 = () => {
+      enemies.forEach(enemy => {
+        const boxRect = box.getBoundingClientRect();
+        const enemyRect = enemy.getBoundingClientRect();
+    
+        if (
+          boxRect.top <= enemyRect.bottom &&
+          boxRect.bottom >= enemyRect.top &&
+          boxRect.left <= enemyRect.right &&
+          boxRect.right >= enemyRect.left
+        ) {
+          enemy.style.display = "none";
+          const audio = new Audio("dino1.mp3"); // تحميل الصوت هنا
+          audio.play(); // تشغيل الصوت
+        }
+      });
+    };
+    
+    player.addEventListener("click", () => {
+      tirebox();
+    });
+    
+    
+    
+    function checkCollision3() {
+      if (
+          isColliding(player, enemy1) ||
+          isColliding(player, enemy2) ||
+          isColliding(player, enemy4) ||
+          isColliding(player, enemy5) ||
+          isColliding(player, enemy6) ||
+          isColliding(player, enemy7)
+        ) {
+          // تحديث حالة اللاعب للموت
+    
+    
+    
+    
+    showGameOverBox();
+    
+    let playerRect = player.getBoundingClientRect();
+    let playerX = playerRect.left;
+    let playerY = playerRect.top;
+    
+    let player9 = document.getElementById("player9");
+    let player9Rect = player9.getBoundingClientRect();
+    let player9Width = player9Rect.width;
+    let player9Height = player9Rect.height;
+    
+    player.style.display = "none";
+          const audio = new Audio("player1.mp3"); // تحميل الصوت هنا
+          audio.play(); // تشغيل الصوت
+    player9.style.position = "absolute";
+    player9.style.display = "block";
+    player9.style.left = (playerX + player9Width/2) + "px";
+    player9.style.top = (playerY + player9Height/2) + "px";
+    
+    setTimeout(function() {
+      player9.style.display = "none";
+    }, 5000);
+    
+        
+    
+    }		}    
+      
+    
+    
+      // تابع للتحقق من الاصطدام بين عنصرين
+      function isColliding(element1, element2) {
+        var element1Rect = element1.getBoundingClientRect();
+        var element2Rect = element2.getBoundingClientRect();
+    
+        return !(
+          element1Rect.bottom < element2Rect.top ||
+          element1Rect.top > element2Rect.bottom ||
+          element1Rect.right < element2Rect.left ||
+          element1Rect.left > element2Rect.right
+        );
+      }
+    
+      // استدعاء التابع checkCollision كل ثانية للتحقق من حدوث اصطدام
+      setInterval(checkCollision3, 500);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    
+      function checkCollision4() {
+    
+    
+    
+        if (isColliding2(player, coin1)) {
+          const audio = new Audio("coin.mp3"); // تحميل الصوت هنا
+          audio.play(); // تشغيل الصوت
+        coin1.style.display = "none";
+        coinsCollected++;
+        document.getElementById("coins-collected").innerHTML = coinsCollected;
+    
+        // تحديث حالة اللاعب للموت
+        // الشفرة الأخرى هنا
+      } else if (isColliding2(player, coin2)) {
+        const audio = new Audio("coin.mp3"); // تحميل الصوت هنا
+          audio.play(); // تشغيل الصوت
+        coin2.style.display = "none";
+        coinsCollected++;
+        document.getElementById("coins-collected").innerHTML = coinsCollected;
+    
+        // تحديث حالة اللاعب للموت
+        // الشفرة الأخرى هنا
+      } else if (isColliding2(player, coin4)) {
+        const audio = new Audio("bom.mp3"); // تحميل الصوت هنا
+          audio.play(); // تشغيل الصوت
+        coin4.style.display = "none";
+        coinsCollected++;
+        document.getElementById("coins-collected").innerHTML = coinsCollected;
+    
+        // تحديث حالة اللاعب للموت
+        // الشفرة الأخرى هنا
+      } else if (isColliding2(player, coin5)) {
+        const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+          audio.play(); // تشغيل الصوت
+        coin5.style.display = "none";
+        coinsCollected++;
+        document.getElementById("coins-collected").innerHTML = coinsCollected;
+    
+        // تحديث حالة اللاعب للموت
+        // الشفرة الأخرى هنا
+      } else if (isColliding2(player, coin6)) {
+            
+        const audio = new Audio("boom.mp3"); // تحميل الصوت هنا
+          audio.play(); // تشغيل الصوت
+        coin6.style.display = "none";
+        coinsCollected++;
+        document.getElementById("coins-collected").innerHTML = coinsCollected;
+    
+        // تحديث حالة اللاعب للموت
+        // الشفرة الأخرى هنا
+      } else if (isColliding2(player, coin7)) {
+        const audio = new Audio("gogo.mp3"); // تحميل الصوت هنا
+          audio.play(); // تشغيل الصوت
+    coin7.style.display = "none";
+    coinsCollected++;    // تحديث حالة اللاعب للموت
+        // الشفرة الأخرى هنا
+      
+          // تحديث حالة اللاعب للموت
+    document.getElementById("coins-collected").innerHTML = coinsCollected;
+    
+    
+        }{
+    
+    
+    
+    
+    let playerRect = player.getBoundingClientRect();
+    let playerX = playerRect.left;
+    let playerY = playerRect.top;
+    
+    let coin1 = document.getElementById("coin1");
+    let coin9 = document.getElementById("coin9");
+    let coin2 = document.getElementById("coin2");
+    let coin4 = document.getElementById("coin4");
+    let coin5 = document.getElementById("coin5");
+    let coin6 = document.getElementById("coin6");
+    let coin7 = document.getElementById("coin7");
+    
+    
+    let coin9Rect = coin9.getBoundingClientRect();
+    let coin9Width = coin9Rect.width;
+    let coin9Height = coin9Rect.height;
+    
+    coin.style.display = "none";
+       
+    coin9.style.position = "absolute";
+    coin9.style.display = "block";
+    coin9.style.left = (playerX + coin9Width/2) + "px";
+    coin9.style.top = (playerY + coin9Height/2) + "px";
+    
+    setTimeout(function() {
+      coin9.style.display = "none";
+    }, 5000);
+        
+    
+    }		}    
+      
+    
+    
+      // تابع للتحقق من الاصطدام بين عنصرين
+      function isColliding2(element1, element2) {
+        var element1Rect = element1.getBoundingClientRect();
+        var element2Rect = element2.getBoundingClientRect();
+    
+        return !(
+          element1Rect.bottom < element2Rect.top ||
+          element1Rect.top > element2Rect.bottom ||
+          element1Rect.right < element2Rect.left ||
+          element1Rect.left > element2Rect.right
+        );
+      }
+    
+      // استدعاء التابع checkCollision كل ثانية للتحقق من حدوث اصطدام
+      setInterval(checkCollision4, 500);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const maxSwords = 50;
+    let canFire = true;
+    let fireCount = 0;
+    const maxFireCount = 50;
+    
+    const fireSword = () => {
+      if (canFire && fireCount < maxFireCount) {
+        canFire = false;
+        fireCount++;
+    
+        sword.style.display = "block";
+        let swordPosition = parseInt(window.getComputedStyle(sword).getPropertyValue("left"));
+    
+        let swordInterval = setInterval(() => {
+          swordPosition += 10;
+          sword.style.left = swordPosition + "px";
+    
+          if (swordPosition >= window.innerWidth - sword.offsetWidth) {
+            clearInterval(swordInterval);
+            sword.style.display = "none";
+            sword.style.left = "20px";
+            canFire = true;
+          }
+    
+          checkCollision();
+          
+        }, 10);
+    
+        setTimeout(() => {
+          clearInterval(swordInterval);
+          sword.style.display = "none";
+          sword.style.left = "20px";
+          canFire = true;
+        }, 400);
+      }
+    };
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const maxBoxs = 50;
+    let canTire = true;
+    let tireCount = 0;
+    const maxTireCount = 50;
+    
+    const tireBox = () => {
+      if (canTire && tireCount < maxTireCount) {
+        canTire = false;
+        tireCount++;
+    
+        box.style.display = "block";
+        let boxPosition = parseInt(window.getComputedStyle(box).getPropertyValue("left"));
+    
+        let boxInterval = setInterval(() => {
+          boxPosition += 10;
+          box.style.left = boxPosition + "px";
+    
+          if (boxPosition >= window.innerWidth - box.offsetWidth) {
+            clearInterval(boxInterval);
+            box.style.display = "none";
+            box.style.left = "20px";
+            canTire = true;
+          }
+    
+          checkCollision2();
+          
+        }, 10);
+    
+        setTimeout(() => {
+          clearInterval(boxInterval);
+          box.style.display = "none";
+          box.style.left = "20px";
+          canTire = true;
+        }, 65);
+      }
+    };
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    let fireInterval; // متغير لحفظ المؤقت الذي يقوم بتنفيذ الاطلاق المستمر
+    
+    document.getElementById("fireButton").addEventListener("mousedown", () => {
+    fireInterval = setInterval(fireSword, 300); // تحديد فاصل زمني لتنفيذ الاطلاق المستمر
+    });
+    
+    document.getElementById("fireButton").addEventListener("mouseup", () => {
+    clearInterval(fireInterval); // إلغاء التكرار عند رفع الإصبع عن الزر
+    });
+    
+    var isFiring = false;
+    
+    function fire() {
+    isFiring = !isFiring;
+    if (isFiring) {
+      currentPlayer = 6; // تحديد اللاعب السادس كلاعب حالي عند الضغط على الزر
+    } 
+    // لا تقم بعمل شيء إذا تم ترك الزر الآن، ودع اللاعب الحالي كما هو
+    
+    // تحديث صورة اللاعب وفقًا للاعب الحالي
+    player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+    }
+    
+    document.getElementById("fireButton").addEventListener("mousedown", fire); // يتم تشغيل الحدث عند الضغط على الزر
+              document.getElementById("fireButton").addEventListener("mouseup", function() {
+              // تحديث اللاعب إلى اللاعب الأول عند ترك الزر
+              currentPlayer = 1;
+              player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+              });
+    
+              document.getElementById("fireButton").addEventListener("click", fire);
+    
+    
+              let leftButton = document.getElementById("moveLeftButton");
+              let rightButton = document.getElementById("moveRightButton");
+              let  fireButton = document.getElementById("fireButton");
+    
+              leftButton.addEventListener("mousedown", moveLeft);
+              rightButton.addEventListener("mousedown", moveRight);
+              jumpButton.addEventListener("mousedown", jump);
+    
+              leftButton.addEventListener("mouseup", stopMoving);
+              rightButton.addEventListener("mouseup", stopMoving);
+              jumpButton.addEventListener("mouseup", stopJumping);
+    
+    
+              
+    
+    function stopJumping() {
+      // Stop the player from jumping when the jump button is released
+      isJumping = false;
+    }
+    
+    
+    
+    let tireInterval; // متغير لحفظ المؤقت الذي يقوم بتنفيذ الاطلاق المستمر
+    
+    document.getElementById("tireButton").addEventListener("mousedown", () => {
+    tireInterval = setInterval(tireBox, 300); // تحديد فاصل زمني لتنفيذ الاطلاق المستمر
+    });
+    
+    document.getElementById("tireButton").addEventListener("mouseup", () => {
+    clearInterval(tireInterval); // إلغاء التكرار عند رفع الإصبع عن الزر
+    });
+    
+    var isFiring = false;
+    
+    function tire() {
+    isFiring = !isFiring;
+    if (isFiring) {
+      currentPlayer = 10; // تحديد اللاعب السادس كلاعب حالي عند الضغط على الزر
+    } 
+    // لا تقم بعمل شيء إذا تم ترك الزر الآن، ودع اللاعب الحالي كما هو
+    
+    // تحديث صورة اللاعب وفقًا للاعب الحالي
+    player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+    }
+    
+    document.getElementById("tireButton").addEventListener("mousedown", tire); // يتم تشغيل الحدث عند الضغط على الزر
+    document.getElementById("tireButton").addEventListener("mouseup", function() {
+    // تحديث اللاعب إلى اللاعب الأول عند ترك الزر
+    currentPlayer = 1;
+    player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+    });
+    
+    document.getElementById("tireButton").addEventListener("click", tire);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                var platform = document.getElementById("platform");
+                var platform2 = document.getElementById("platform2");
+                var platform4 = document.getElementById("platform4");
+                var platform5 = document.getElementById("platform5");
+                var platform6 = document.getElementById("platform6");
+                var platform7 = document.getElementById("platform7");
+                var platform0 = document.getElementById("platform0");
+    
+              
+                var enemy1 = document.getElementById("enemy1");
+                var enemy2 = document.getElementById("enemy2");
+                var enemy4 = document.getElementById("enemy4");
+                var enemy5 = document.getElementById("enemy5");
+                var enemy6 = document.getElementById("enemy6");
+                var enemy7 = document.getElementById("enemy7");
+    
+    
+    
+    
+    
+                var enemy1Left = 5;
+                var enemy1Top = 0;
+                var enemy1Speed = 0.80;
+                var enemy1Direction = 1;
+    
+                var enemy2Left = 5;
+                var enemy2Top = 0;
+                var enemy2Speed = 0.80;
+                var enemy2Direction = 1;
+    
+        
+                var enemy4Left = 5;
+                var enemy4Top = 0;
+                var enemy4Speed = 0.80;
+                var enemy4Direction = 1;
+    
+    
+                var enemy5Left = 5;
+                var enemy5Top = 0;
+                var enemy5Speed = 0.80;
+                var enemy5Direction = 1;
+    
+    
+                var enemy6Left = 5;
+                var enemy6Top = 0;
+                var enemy6Speed = 0.40;
+                var enemy6Direction = 1;
+    
+    
+                var enemy7Left = 5;
+                var enemy7Top = 0;
+                var enemy7Speed = 0.80;
+                var enemy7Direction = 1;
+    
+    
+    
+                var currentIndex = 1;
+                var isMovingRight = false;
+                var isMovingLeft = false;
+                var moveInterval = true;
+    
+    
+    
+                function updateEnemy() {
+    
+                  var platformTop = platform.offsetTop;
+                  var platform2Top = platform2.offsetTop;
+                  var platform4Top = platform4.offsetTop;
+                  var platform5Top = platform5.offsetTop;
+                  var platform6Top = platform6.offsetTop;
+                  var platform7Top = platform7.offsetTop;
+                  var platform0Top = platform0.offsetTop;
+                
+    
+    
+    
+    
+    
+    
+                  enemy1Left += enemy1Speed * enemy1Direction;
+                  enemy2Left += enemy2Speed * enemy2Direction;
+                  enemy4Left += enemy4Speed * enemy4Direction;
+                  enemy5Left += enemy5Speed * enemy5Direction;
+                  enemy6Left += enemy6Speed * enemy6Direction;
+                  enemy7Left += enemy6Speed * enemy7Direction;
+                
+    
+    
+    
+                if (enemy1Left + enemy1.offsetWidth >= platform4.offsetWidth) {
+                  enemy1Direction = -1;
+                } else if (enemy1Left <= 0) {
+                  enemy1Direction = 1;
+                }
+                
+                if (enemy1Top + enemy1.offsetHeight >= platform4Top) {
+                  enemy1Top = platform4Top - enemy1.offsetHeight;
+                }
+                
+                enemy1.style.left = enemy1Left + "px";
+                enemy1.style.top = enemy1Top + "px";
+                
+                if (enemy1Direction == 1) {
+                  enemy1.style.transform = "scaleX(1)";
+                } else {
+                  enemy1.style.transform = "scaleX(-1)";
+                }
+    
+    
+    
+    
+    
+    
+    
+    
+                if (enemy2Left + enemy2.offsetWidth >= platform4.offsetWidth) {
+                  enemy2Direction = -1;
+                } else if (enemy2Left <= 0) {
+                  enemy2Direction = 1;
+                }
+                
+                if (enemy2Top + enemy2.offsetHeight >= platform4Top) {
+                  enemy2Top = platform4Top - enemy2.offsetHeight;
+                }
+                
+                enemy2.style.left = enemy2Left + "px";
+                enemy2.style.top = enemy2Top + "px";
+                
+                if (enemy2Direction == 1) {
+                  enemy2.style.transform = "scaleX(1)";
+                } else {
+                  enemy2.style.transform = "scaleX(-1)";
+                }
+    
+    
+    
+    
+    
+                if (enemy4Left + enemy4.offsetWidth >= platform4.offsetWidth) {
+                  enemy4Direction = -1;
+                } else if (enemy4Left <= 0) {
+                  enemy4Direction = 1;
+                }
+                
+                if (enemy4Top + enemy4.offsetHeight >= platform4Top) {
+                  enemy4Top = platform4Top - enemy4.offsetHeight;
+                }
+                
+                enemy4.style.left = enemy4Left + "px";
+                enemy4.style.top = enemy4Top + "px";
+                
+                if (enemy4Direction == 1) {
+                  enemy4.style.transform = "scaleX(1)";
+                } else {
+                  enemy4.style.transform = "scaleX(-1)";
+                }
+    
+    
+    
+    
+    
+    
+                if (enemy5Left + enemy5.offsetWidth >= platform4.offsetWidth) {
+                  enemy5Direction = -1;
+                } else if (enemy5Left <= 0) {
+                  enemy5Direction = 1;
+                }
+                
+                if (enemy5Top + enemy5.offsetHeight >= platform4Top) {
+                  enemy5Top = platform4Top - enemy5.offsetHeight;
+                }
+                
+                enemy5.style.left = enemy5Left + "px";
+                enemy5.style.top = enemy5Top + "px";
+                
+                if (enemy5Direction == 1) {
+                  enemy5.style.transform = "scaleX(1)";
+                } else {
+                  enemy5.style.transform = "scaleX(-1)";
+                }
+    
+    
+    
+    
+    
+    
+                if (enemy6Left + enemy6.offsetWidth >= platform4.offsetWidth) {
+                  enemy6Direction = -1;
+                } else if (enemy6Left <= 0) {
+                  enemy6Direction = +1;
+                }
+                
+                if (enemy6Top + enemy6.offsetHeight >= platform4Top) {
+                  enemy6Top = platform4Top - enemy6.offsetHeight;
+                }
+                
+                enemy6.style.left = enemy6Left + "px";
+                enemy6.style.top = enemy6Top + "px";
+                
+                if (enemy6Direction == 1) {
+                  enemy6.style.transform = "scaleX(1)";
+                } else {
+                  enemy6.style.transform = "scaleX(-1)";
+                }
+    
+    
+    
+                if (enemy7Left + enemy7.offsetWidth >= platform4.offsetWidth) {
+                  enemy7Direction = -1;
+                } else if (enemy7Left <= 0) {
+                  enemy7Direction = 1;
+                }
+                
+                if (enemy7Top + enemy7.offsetHeight >= platform4Top) {
+                  enemy7Top = platform4Top - enemy7.offsetHeight;
+                }
+                
+                enemy7.style.left = enemy7Left + "px";
+                enemy7.style.top = enemy7Top + "px";
+                
+                if (enemy7Direction == 1) {
+                  enemy7.style.transform = "scaleX(1)";
+                } else {
+                  enemy7.style.transform = "scaleX(-1)";
+                }
+    
+    
+    
+    
+    
+    
+                }
+                setInterval(updateEnemy, 10);
+    
+    
+    
+    
+    
+    
+             </script>
+</body>
+
+</html>

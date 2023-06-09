@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        #enemy6 {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+        
+        #player {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            background-color: green;
+        }
+
+        .bullet {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="enemy6">
+        <div id="bullet"></div>
+    </div>
+
+    <div id="player"></div>
+    
+  
+    <script>
+
+
+
+
+
+var enemy6 = document.getElementById("enemy6");
+        var player = document.getElementById("player");
+        
+        setInterval(function() {
+            var enemy6Rect = enemy6.getBoundingClientRect();
+            var playerRect = player.getBoundingClientRect();
+            
+            var enemy6CenterX = enemy6Rect.left + (enemy6Rect.width / 2);
+            var enemy6CenterY = enemy6Rect.top + (enemy6Rect.height / 2);
+            var playerCenterX = playerRect.left + (playerRect.width / 2);
+            var playerCenterY = playerRect.top + (playerRect.height / 2);
+            
+            var angle = Math.atan2(playerCenterY - enemy6CenterY, playerCenterX - enemy6CenterX);
+            var bullet = document.createElement("div");
+            bullet.className = "bullet";
+            bullet.style.left = enemy6CenterX + "px";
+            bullet.style.top = enemy6CenterY + "px";
+            document.body.appendChild(bullet);
+            
+            var bulletSpeed = 5;
+            var bulletMoveX = Math.cos(angle) * bulletSpeed;
+            var bulletMoveY = Math.sin(angle) * bulletSpeed;
+            
+            var bulletInterval = setInterval(function() {
+                var bulletRect = bullet.getBoundingClientRect();
+                
+                if (bulletRect.left < 0 || bulletRect.top < 0 || bulletRect.right > window.innerWidth || bulletRect.bottom > window.innerHeight) {
+                    clearInterval(bulletInterval);
+                    document.body.removeChild(bullet);
+                } else {
+                    bullet.style.left = bulletRect.left + bulletMoveX + "px";
+                    bullet.style.top = bulletRect.top + bulletMoveY + "px";
+                    
+                    var playerRect = player.getBoundingClientRect();
+                    var playerCenterX = playerRect.left + (playerRect.width / 2);
+                    var playerCenterY = playerRect.top + (playerRect.height / 2);
+                    
+                    if (
+                        playerCenterX >= bulletRect.left &&
+                        playerCenterX <= bulletRect.right &&
+                        playerCenterY >= bulletRect.top &&
+                        playerCenterY <= bulletRect.bottom
+                    ) {
+                        // تم تصادم اللاعب بالرصاصة
+
+                    //    player.style.backgroundColor = "red";
+                        
+
+                    player.style.display = "none"; // قم بإخفاء الكرة
+                    bullet.style.display = "none"; // قم بإخفاء الكرة
+
+                        clearInterval(bulletInterval);
+                        document.body.removeChild(bullet);
+                    }
+                }
+            }, 10);
+        }, 2000);
+
+
+

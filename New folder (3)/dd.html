@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+#background {
+            width: 100%;
+            height: 100vh;
+            background-image: url(bbgg.gif);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            border-color: black;
+        }
+
+        #player {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 50px;
+            left: 100px;
+            width: 70px;
+            height: 90px;
+            background-image: url(player1.gif);
+        }
+
+
+        #enemy {
+            background-image: url('33.gif');
+                    position: absolute;
+            bottom: 100px;
+            background-size: 100% 100%;
+
+                    height: 280px;
+                    width: 100px;
+            
+
+                }
+
+
+    #sword {
+      width: 10px;
+      height: 10px;
+      background-color: rgb(255, 4, 4);
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      transition: left 0.5s linear;
+    }
+
+
+
+    #moveLeftButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 40px;
+            width: 40px;
+            height: 40px;
+            background-image: url(left.png);
+        }
+
+#moveRightButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 100px;
+            width: 40px;
+            height: 40px;
+            background-image: url(right.png);
+        }
+
+#jumpButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 750px;
+            width: 40px;
+            height: 40px;
+            background-image: url(up.png);
+        }
+
+#fireButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 700px;
+            width: 40px;
+            height: 40px;
+            background-image: url(x.png);
+        }
+
+
+
+    #game-stats {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: transparent;
+			padding: 10px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			font-family: Arial, sans-serif;
+			}
+
+			#game-stats span {
+			margin: 0 10px;
+			color: #fafafa;
+
+			}
+
+			#game-stats span span {
+			font-weight: bold;
+			color: #08c408;
+
+			}
+
+
+			#game-over-box {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 450px;
+			height: 331px;
+      background-image: url('gmovr.gif');
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+      background-size: 100% 100%;
+
+			}
+
+			#game-over-box h2 {
+			color: white;
+			font-size: 30px;
+			margin-bottom: 10px;
+			}
+
+			#game-over-box p {
+			color: white;
+			font-size: 20px;
+			margin-bottom: 20px;
+			}
+
+			#score {
+			font-weight: bold;
+			}
+
+			#restart-button {
+			background-color: white;
+			color: red;
+			font-size: 20px;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+			}
+
+
+			h2 {
+			color: rgb(247, 248, 253);
+      border-color: coral;
+			font-weight: bold;
+			font-size: 48px;
+			animation: fade-out 8s forwards;
+			position: absolute;
+			top: calc(50% - 100px);
+			left: 50%;
+			transform: translate(-50%, -200px);
+			}
+
+			@keyframes fade-out {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					display: none;
+					}
+			}
+
+			#you-win-box  {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 300px;
+			height: 160px;
+			background-color: #4CAF50;
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+			}
+
+			#you-win-box h3 {
+			color: white;
+			font-size: 30px;
+			margin-bottom: 10px;
+			}
+
+			#you-win-box p {
+			color: white;
+			font-size: 20px;
+			margin-bottom: 20px;
+			}
+
+			#score {
+			font-weight: bold;
+			}
+
+			#next-button {
+			background-color: white;
+			color: red;
+			font-size: 20px;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+			}
+
+			h3 {
+			color: rgb(6, 11, 92);
+			font-weight: bold;
+			font-size: 48px;
+			animation: fade-out 8s forwards;
+			position: absolute;
+			top: calc(50% - 100px);
+			left: 50%;
+			transform: translate(-50%, -200px);
+			}
+
+			@keyframes fade-out {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					display: none;
+				}
+			}
+
+
+
+
+
+
+#timer {
+            font-weight: bold;
+        }
+
+        #game-over-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            display: none;
+        }
+
+        #game-over-message {
+            color: white;
+            font-size: 72px;
+            text-align: center;
+        }
+
+
+    #health {
+      width: 100px;
+      height: 10px;
+      background: linear-gradient(to left, red, yellow);
+      position: absolute;
+      transform: translateY(-50%);
+      
+    }
+
+
+  </style>
+</head>
+<body>
+
+    
+
+
+    <div id="background">
+
+        <h2>STAGE 01</h2>
+
+
+   
+  <div id="enemy">
+    <div id="health"></div>
+  </div>
+
+  <div id="player">
+    <div id="sword"></div>
+  </div>
+
+
+  <div id="moveLeftButton"></div>
+  <div id="moveRightButton"></div>
+  <div id="jumpButton"></div>
+  <div id="fireButton"></div>
+
+  <div id="game-over-box">
+    <h2>Game Over</h2>
+    <p>Your score is <span id="score"></span></p>
+    <button id="restart-button">Restart</button>
+
+
+  </div>
+
+  <div id="you-win-box">
+
+    <h3>you win</h3>
+
+    <p>Your score is <span id="score"></span></p>
+
+    <button id="next-button" onclick="goToPage02()">next</button>	
+
+      <script>
+
+
+
+
+    function goToPage02() {
+      location.href = 'Page02.html';
+    }
+      </script>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div id="game-stats">
+
+
+
+
+    <span><img src="a1.png">- -Time:<span id="timer">30</span></span>
+
+    <span>coins<span id="coins-collected">0</span></span>
+
+    <span>Score<span id="enemies-killed">0</span></span>
+
+
+    <span><span id="lives">3</span>PL :<img src="a2.png"></span>
+
+
+  </div>
+
+  <div id="game-over-overlay">
+    <div id="game-over-message"></div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+<script>
+  var swordHits = 0;
+    var sword = document.getElementById("sword");
+    var health = document.getElementById("health");
+    var isSwordMoving = false;
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === " ") {
+        if (!isSwordMoving) {
+          swordHits++;
+          isSwordMoving = true;
+
+          var swordPos = parseInt(sword.style.left) || 10;
+          var healthPos = parseInt(health.style.right) || 10;
+          var distance = healthPos - swordPos;
+          var moveStep = 10;
+
+          if (distance > 0) {
+            sword.style.left = (swordPos + moveStep) + "px";
+          } else if (distance < 0) {
+            sword.style.left = (swordPos - moveStep) + "px";
+          }
+
+          if (swordHits >= 10) {
+            health.style.right = "10px";
+          } else {
+            var colorValue = Math.floor((swordHits / 10) * 100);
+            health.style.right = (10 + (swordHits * 10)) + "px";
+            health.style.background = `linear-gradient(to left, red ${colorValue}%, yellow ${colorValue}%)`;
+          }
+
+          if (swordHits >= 10) {
+            alert("لقد قتلت العدو!");
+          }
+
+          setTimeout(function() {
+            isSwordMoving = false;
+          }, 200);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

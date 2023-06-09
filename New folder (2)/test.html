@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+#background {
+            width: 100%;
+            height: 100vh;
+            background-image: url(bbgg.gif);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            border-color: black;
+        }
+
+
+
+#player {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 50px;
+            left: 100px;
+            width: 80px;
+            height: 100px;
+            background-image: url(player1.gif);
+        }
+
+#enemy9 {
+        position: relative;
+			bottom: 0px;
+			left: 400px;				
+			width: 80px;
+	    height: 100px;
+      transform: scaleX(1);
+      background-size: 100% 100%;
+      background-image: url(77.gif);
+
+			}
+
+
+
+#moveLeftButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 40px;
+            width: 40px;
+            height: 40px;
+            background-image: url(left.png);
+        }
+
+#moveRightButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 100px;
+            width: 40px;
+            height: 40px;
+            background-image: url(right.png);
+        }
+
+#jumpButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 750px;
+            width: 40px;
+            height: 40px;
+            background-image: url(up.png);
+        }
+
+#fireButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 700px;
+            width: 40px;
+            height: 40px;
+            background-image: url(x.png);
+        }
+
+
+#tireButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 650px;
+            width: 40px;
+            height: 40px;
+            background-image: url(w.png);
+        }
+
+
+#sword {
+			background-color:rgb(211, 124, 43) ;		
+			height: 6px;
+			width: 15px;
+			position: absolute;
+			bottom: 59px;
+			left: 50px;
+			border-radius: 50%;
+			display: none;
+            transition: left 0.5s; /* يُضاف هذا لتوفير حركة سلسة */
+            transform: scaleX(-1);
+
+			}
+
+
+
+#box {
+             background-color: transparent;	
+	      	height: 6px;
+			width: 15px;
+			position: absolute;
+			bottom: 59px;
+			left: 50px;
+			border-radius: 50%;
+			display: none;
+			}
+
+
+            .jump {
+  animation: jump 0.5s;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+.health-bar {
+  width: 70px;
+  height: 6px;
+  background-color: rgb(238, 255, 7);
+  transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+  <div id="background">
+
+
+        <div id="player">
+            <div id="sword"></div>
+        </div> 
+
+         <div id="enemy9"></div>
+
+
+
+      <div id="moveLeftButton"></div>
+      <div id="moveRightButton"></div>
+      <div id="jumpButton"></div>
+      <div id="fireButton"></div>
+      <div id="tireButton"></div>
+
+
+
+
+    </div>
+
+    <script>
+
+
+                    var isPlayerFlipped = false;
+
+
+                    var background = document.getElementById('background');
+
+
+
+                    var player = document.getElementById('player');
+                    let enemy9 = document.getElementById("enemy9");
+
+                    var moveLeftButton = document.getElementById('moveLeftButton');
+                    var moveRightButton = document.getElementById('moveRightButton');
+                    var jumpButton = document.getElementById('jumpButton');
+                    var fireButton = document.getElementById('fireButton');
+                    var tireButton = document.getElementById('tireButton');
+
+                    var cameraPosition = 0;
+                    var currentPosition = 100;
+                    var screenWidth = window.innerWidth;
+
+                    // حساب السرعة الخاصة بالخلفية وتطبيقها على المنصات
+                    var backgroundSpeed = 1; // سرعة الخلفية
+
+                    var moveLeftInterval;
+                    var moveRightInterval;
+
+
+                    moveLeftButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند لمس الزر
+                        isFacingRight = false;
+                        player.style.backgroundImage = "url('player2.gif')";
+                        player.style.transform = 'scaleX(-1)';
+
+                        moveLeftInterval = setInterval(function() {
+                            if (currentPosition > 80) { // يسارا
+                                currentPosition -= 1.5; // زيادة القيمة إلى 0
+                                updateCamera();
+                            }
+                        }, 10);
+                    });
+
+                    moveRightButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند لمس الزر
+                        isFacingRight = true;
+                        player.style.backgroundImage = "url('player3.gif')";
+                        player.style.transform = 'scaleX(1)';
+
+                        moveRightInterval = setInterval(function() {
+                            if (currentPosition < 850) { // يمينا
+                                currentPosition += 1.5; // زيادة القيمة إلى 1
+                                updateCamera();
+                            }
+                        }, 10);
+                    });
+
+                    moveLeftButton.addEventListener('touchend', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند رفع اللمس عن الزر
+                        clearInterval(moveLeftInterval);
+
+                        if (!isFacingRight) {
+                            player.style.backgroundImage = "url('player1.gif')";
+
+                        }
+                    });
+
+                    moveRightButton.addEventListener('touchend', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند رفع اللمس عن الزر
+                        clearInterval(moveRightInterval);
+
+                        if (isFacingRight) {
+                            player.style.backgroundImage = "url('player1.gif')";
+                        }
+                    });
+
+
+
+                    var isJumping = false;
+
+                    function jump() {
+                        if (!isJumping) {
+                            isJumping = true;
+                            player.style.transition = 'bottom 0.5s'; // تحديد مدة الانتقال للأعلى
+                            player.style.bottom = '190px';
+
+                            // تغيير صورة اللاعب إلى الصورة المطلوبة أثناء القفز
+                            player.style.backgroundImage = "url('player4.png')";
+
+                            setTimeout(function() {
+                                player.style.transition = 'bottom 0.5s'; // تحديد مدة الانتقال للأسفل
+                                player.style.bottom = '50px';
+
+                                // تغيير صورة اللاعب إلى الصورة المطلوبة بعد النزول من القفز
+                                player.style.backgroundImage = "url('player5.png')";
+
+                                setTimeout(function() {
+                                    isJumping = false;
+                                    // استعادة صورة اللاعب الأصلية بعد الانتهاء من القفز
+                                    player.style.backgroundImage = "url('player1.gif')";
+                                }, 500); // انتظر 500 مللي ثانية قبل تعيين isJumping إلى false
+                            }, 700); // انتظر 700 مللي ثانية قبل النزول
+
+
+                            
+                        } else if (isJumping) {
+                            // للقفز مرة أخرى أثناء القفز الحالي
+                            player.style.transition = 'bottom 0.5s'; // تحديد مدة الانتقال للأعلى
+                            player.style.bottom = '260px';
+                            player.style.backgroundImage = "url('player4.png')";
+
+                            setTimeout(function() {
+                                player.style.transition = 'bottom 0.5s'; // تحديد مدة الانتقال للأسفل
+                                player.style.bottom = '50px';
+                                player.style.backgroundImage = "url('player1.gif')";
+                            }, 500); // انتظر 700 مللي ثانية قبل النزول
+                        }
+                    }
+
+                    jumpButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند لمس الزر
+                        jump();
+                    });
+
+
+
+
+                    function updateCamera() {
+
+
+                        var playerPosition = 450 - currentPosition; // حساب موضع اللاعب على الشاشة
+                        cameraPosition = playerPosition - screenWidth / 2; // حساب موضع الكاميرا على الخلفية
+                        if (cameraPosition < -2255) {
+                            // الحد الأيسر للحركة
+                            cameraPosition = -2255;
+                        }
+                        if (cameraPosition > 0) {
+                            // الحد الأيمن للحركة
+                            cameraPosition = 0;
+                        }
+
+                        background.style.backgroundPosition = cameraPosition + 'px'; // تحديث خاصية backgroundPosition لتحريك الخلفية            
+                        updatePlatforms(); // تحديث المنصات
+                        player.style.left = currentPosition + 'px'; // تحديث خاصية left لتحريك اللاعب على الشاشة
+                    }
+
+                    setInterval(function() {
+                        updateCamera(); // تحديث الكاميرا بشكل مستمر
+                    }, 10);
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+<script>
+    const enemies = document.querySelectorAll("#enemy1, #enemy2, #enemy3, #enemy4, #enemy5, #enemy6, #enemy7, #enemy8");
+    const sword = document.getElementById("sword");
+    const maxSwordHits = 200; // عدد السيوف المطلوبة لقتل العدو
+
+    let score = 0;
+
+    const checkCollision = () => {
+      enemies.forEach(enemy => {
+        enemy.addEventListener("touchstart", () => {
+          // رمز المنطق عند الاصطدام بالعدو
+          const swordRect = sword.getBoundingClientRect();
+          const enemyRect = enemy.getBoundingClientRect();
+          const healthBar = enemy.querySelector(".health-bar");
+          const hits = enemy.dataset.hits || 0; // عدد السيوف التي تم اصطدامها بالفعل
+
+          if (
+            swordRect.top <= enemyRect.bottom &&
+            swordRect.bottom >= enemyRect.top &&
+            swordRect.left <= enemyRect.right &&
+            swordRect.right >= enemyRect.left
+          ) {
+            if (hits < maxSwordHits) {
+              enemy.dataset.hits = parseInt(hits) + 1; // زيادة عدد السيوف التي تم اصطدامها
+              const percent = Math.round((hits / maxSwordHits) * 100); // حساب النسبة المئوية للصحة المتبقية
+              const increase = 100 / maxSwordHits; // حساب النسبة المئوية للزيادة في العرض
+              const newWidth = Math.round(percent * increase); // حساب العرض الجديد بناءً على النسبة المئوية والزيادة
+
+
+
+
+
+              healthBar.style.width = `${newWidth}%`; // تعيين العرض الجديد لشريط الصحة
+            } else {
+              // العدو تم قتله
+              enemy.style.display = "none"; // إخفاء العدو
+              score++; // زيادة النقاط
+              console.log(`تم قتل العدو. النقاط: ${score}`);
+            }
+          }
+        });
+
+        enemy.addEventListener("touchend", () => {
+          // رمز المنطق عند انتهاء الاصطدام بالعدو
+        });
+      });
+    };
+
+    const moveSword = (event) => {
+      sword.style.left = `${event.touches[0].clientX - 50}px`; // تحريك السيف تحت موقع اللمس
+      sword.style.top = `${event.touches[0].clientY - 50}px`;
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      checkCollision(); // فحص الاصطدام عند تحميل الصفحة
+
+      document.addEventListener("touchmove", moveSword); // تحريك السيف مع حركة اللمس
+
+      document.addEventListener("touchend", () => {
+        sword.style.left = "-9999px"; // إخفاء السيف عند انتهاء اللمس
+        sword.style.top = "-9999px";
+      });
+    });
+  </script>
+
+
+
+
+
+  </body>
+  
+  </html>
+
+
+

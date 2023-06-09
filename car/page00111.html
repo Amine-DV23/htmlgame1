@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+#background {
+            width: 100%;
+            height: 100vh;
+            background-image: url(bbgg.gif);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            border-color: black;
+        }
+
+
+
+#player {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 100px;
+            left: 100px;
+            width: 200px;
+            height: 50px;
+            background-image: url(car.gif);
+        }
+
+#player9 {
+  position: absolute;
+            background-size: 100% 100%;
+            bottom: 100px;
+            left: 100px;
+            width: 200px;
+            height: 50px;
+      transform: scaleX(1);
+			}
+
+
+#player8 {
+        bottom: 50px;
+			left: 100px;				
+			width: 80px;
+	    height: 100px;
+      transform: scaleX(1);
+      background-size: 100% 100%;
+			}
+
+
+
+#moveLeftButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 41px;
+            left: 38px;
+            width: 40px;
+            height: 40px;
+            background-image: url(left.png);
+        }
+
+#moveRightButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 41px;
+            left: 122px;
+            width: 40px;
+            height: 40px;
+            background-image: url(right.png);
+        }
+
+#moveUpButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 80px;
+            left: 80px;
+            width: 40px;
+            height: 40px;
+            background-image: url(up.png);
+        }
+
+#moveDownButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 2px;
+            left: 80px;
+            width: 40px;
+            height: 40px;
+            background-image: url(down.png);
+        }
+
+#jumpButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 40px;
+            left: 760px;
+            width: 40px;
+            height: 40px;
+            background-image: url(up.png);
+        }
+
+#fireButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 690px;
+            width: 40px;
+            height: 40px;
+            background-image: url(x.png);
+        }
+
+#tireButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 630px;
+            width: 40px;
+            height: 40px;
+            background-image: url(w.png);
+        }
+
+
+
+
+
+#coin1 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('8.gif');
+		}
+
+#coin2 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('2.png');
+		}
+#coin3 {
+  position: absolute;
+
+  background-size: 100% 100%;
+			bottom: -50px;
+      left: 350;
+			width: 15px;
+			height: 15px;
+      background-image: url('3.png');
+
+		}
+    
+#coin4 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('4.png');
+		}
+
+    
+#coin5 {
+    position: absolute;
+      background-size: 100% 100%;
+			bottom: -250px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('5.png');
+		}
+
+    
+#coin6 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('6.png');
+		}
+
+    
+#coin7 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: 10px;
+      left: 0;
+			width: 60px;
+			height: 20px;
+      background-image: url('7.png');
+		}
+
+    
+    
+#coin8 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 550;
+			width: 30px;
+			height: 20px;
+      background-image: url('08.gif');
+		}
+
+ 
+
+      #sword {
+			background-color:rgb(211, 124, 43) ;		
+			height: 6px;
+			width: 15px;
+			position: absolute;
+			bottom: 59px;
+			left: 50px;
+			border-radius: 50%;
+			display: none;
+            transition: left 0.5s; /* يُضاف هذا لتوفير حركة سلسة */
+
+			}
+
+      #sword2 {
+        background-image: url('bll2.png');
+        bottom: -15px;
+        left: 30px;
+
+			height: 20px;
+			width: 20px;
+			position: absolute;
+      background-size: 100% 100%;
+      border-radius: 50%;
+
+			}
+
+
+      #box {
+             background-color: transparent;	
+	      	height: 6px;
+			width: 15px;
+			position: absolute;
+			bottom: 59px;
+			left: 50px;
+			border-radius: 50%;
+			display: none;
+			}
+
+
+
+
+      #bullet {
+        position: absolute;
+            width: 7px;
+            height: 5px;
+            background-color: rgb(49, 7, 7)
+			}
+
+
+
+
+#platform1 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 150px;
+            left: 0px;
+            width: 1000px;
+            height: 20px;
+        }
+ #platform2 {
+
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 100px;
+            left: 800px;
+            width: 400px;
+            height: 20px;
+                     }
+
+#platform3 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 90px;
+            left: 1000px;
+            width: 400px;
+            height: 20px;
+		}
+
+#platform4 {
+
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 90px;
+            left: 1500px;
+            width: 400px;
+            height: 20px;
+
+            }
+
+
+#platform5 {
+
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 320px;
+            left: 1650px;
+            width: 400px;
+            height: 20px;
+
+          }
+
+#platform6 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 130px;
+            left: 1650px;
+            width: 50px;
+            height: 20px;
+
+            }
+
+#platform7 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 320px;
+            left: 900px;
+            width: 600px;
+            height: 20px;
+            }
+
+#platform8 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 100px;
+            left: 300px;
+            width: 400px;
+            height: 20px;
+            } 
+
+
+
+                
+
+
+
+#enemy1 {
+            background-image: url('33.gif');
+                    position: absolute;
+            bottom: 100px;
+            background-size: 100% 100%;
+
+                    height: 280px;
+                    width: 100px;
+            
+
+                }
+
+#enemy2 {
+            background-image: url('22.gif');
+            position: absolute;
+                height: 50px;
+                width: 100px;
+                background-size: 100% 100%;
+
+        }
+
+
+#enemy3 {
+            background-image: url('22.gif');
+            position: absolute;
+            height: 60px;
+            left: 40;
+            width: 80px;
+            background-size: 100% 100%;
+            bottom: 0px;
+
+
+
+        }
+
+
+#enemy4 {
+            background-image: url('44.gif');
+            position: absolute;
+            background-size: 100% 100%;
+                    height: 40px;
+                    width: 100px;
+        
+                }
+
+
+
+#enemy5 {
+            background-image: url('11.gif');
+                    position: absolute;
+            bottom: 10px;
+            background-size: 100% 100%;
+
+            height: 60px;
+            width: 80px;
+            
+
+                }
+
+      
+#enemy6 {
+            background-image: url('99.gif');
+            position: relative;
+            bottom: 150px;
+            background-size: 100% 100%;
+            right: 100px;;
+            height: 90px;
+            width: 100px;
+            
+
+			}
+
+
+
+#enemy7 {
+            background-image: url('11.gif');
+            position: absolute;
+            height: 60px;
+            left: 200;
+            width: 80px;
+            background-size: 100% 100%;
+            bottom: 10px;
+
+
+
+        }
+        
+#enemy8 {
+            background-image: url('44.gif');
+            position: absolute;
+            height: 30px;
+            left: 200;
+            width: 80px;
+            background-size: 100% 100%;
+            bottom: 10px;
+
+
+
+        }
+
+        
+
+
+
+
+#game-stats {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: transparent;
+          padding: 10px;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          font-family: Arial, sans-serif;
+          }
+
+#game-stats span {
+          margin: 0 10px;
+          color: #fafafa;
+
+          }
+
+#game-stats span span {
+          font-weight: bold;
+          color: #08c408;
+
+          }
+
+
+#game-over-box {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 200px;
+			height: 100px;
+      background-image: url('gmovr.gif');
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+      background-size: 100% 100%;
+
+			}
+
+#game-over-box h2 {
+			color: white;
+			font-size: 30px;
+			margin-bottom: 10px;
+			}
+
+#game-over-box p {
+			color: white;
+			font-size: 20px;
+			margin-bottom: 20px;
+			}
+
+#score {
+			font-weight: bold;
+			}
+
+#restart-button {
+			background-color: white;
+			color: red;
+			font-size: 20px;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+			}
+
+h2 {
+    color: rgb(247, 248, 253);
+            border-color: coral;
+            font-weight: bold;
+            font-size: 48px;
+            animation: fade-out 10s forwards;
+            position: absolute;
+            top: calc(50% - 100px);
+            left: 50%;
+            transform: translate(-50%, -50px);
+        }
+
+#you-win-box  {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 200px;
+			height: 100px;
+			background-color: #4CAF50;
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+			}
+
+#you-win-box h3 {
+			color: white;
+			font-size: 30px;
+			margin-bottom: 10px;
+			}
+
+#you-win-box p {
+			color: white;
+			font-size: 20px;
+			margin-bottom: 20px;
+			}
+
+#score {
+			font-weight: bold;
+			}
+
+#next-button {
+			background-color: white;
+			color: red;
+			font-size: 20px;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+			}
+
+			h3 {
+			color: rgb(6, 11, 92);
+			font-weight: bold;
+			font-size: 48px;
+			animation: fade-out 8s forwards;
+			position: absolute;
+			top: calc(50% - 100px);
+			left: 50%;
+			transform: translate(-50%, -200px);
+			}
+
+			@keyframes fade-out {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					display: none;
+				}
+			}
+
+
+      #health {
+        width: 90px;
+        height: 7px;
+        background-size: 100% 100%;
+        bottom: 356px;
+        left: 710px;
+        background: linear-gradient(to left, red, yellow);
+        position: absolute;
+      }
+
+#health2 {
+        width: 90px;
+        height: 7px;
+        background-size: 100% 100%;
+        bottom: 357px;
+        left: 46px;
+        background: linear-gradient(to left, rgb(241, 238, 5), #f4f801);
+        position: absolute;
+      }
+
+
+#timer {
+            font-weight: bold;
+        }
+
+#game-over-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            display: none;
+        }
+
+#game-over-message {
+            color: white;
+            font-size: 72px;
+            text-align: center;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+
+
+    <div id="background">
+
+        <h2>STAGE 01</h2>
+
+
+
+
+        <div id="platform7">
+
+
+            <div id="coin3"></div>
+
+        </div>
+
+
+
+       <div id="platform6">
+
+            <div id="enemy6"></div>
+
+            <div id="coin8"></div>
+
+              
+            </div>
+
+
+
+        <div id="platform5">
+
+            <div id="coin5"></div>
+
+        </div>
+
+
+
+
+        <div id="platform8">
+
+            <div id="coin6"></div>
+
+        </div>
+
+
+        <div id="platform4">
+
+          <div id="coin4"></div>
+
+      </div>
+
+
+      <div id="platform2">
+
+        <div id="coin2"></div>
+
+    </div>
+
+
+    <div id="platform3">
+
+      <div id="coin7"></div>
+
+  </div>
+
+
+
+        <div id="platform1">
+          <div id="coin1"></div>
+
+
+      </div>
+
+
+
+
+
+
+        <div id="player">
+      
+            <div id="sword"></div>
+            <div id="box"></div>
+        </div> 
+
+
+
+
+        <audio id="audio1" src="game01.mp3"></audio>
+        <audio id="audio2" src="gn1.mp3"></audio>
+        <audio id="audio3" src="box.mp3"></audio>
+        <audio id="audio4" src="jump.mp3"></audio>
+
+        <audio id="audio5" src="mov.mp3"></audio>
+        <audio id="audio6" src="mov.mp3"></audio>
+   
+      
+        <img id="player8" src="player8.gif" style="display: none;">
+        <img id="player9" src="player9.gif" style="display: none;">
+        <img id="coin9" src="coin9.gif" style="display: none;">
+
+
+        <div id="game-over-box">
+        <h2>Game Over</h2>
+        <p>Your score is <span id="score"></span></p>
+        <button id="restart-button">Restart</button>
+
+
+      </div>
+
+      <div id="you-win-box">
+
+        <h3>you win</h3>
+
+        <p>Your score is <span id="score"></span></p>
+
+        <button id="next-button" onclick="goToPage02()">next</button>	
+
+          <script>
+
+
+
+
+        function goToPage02() {
+          location.href = 'Page02.html';
+        }
+          </script>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div id="game-stats">
+
+        <span><img src="a1.png"><span id="timer">30</span>Time:</span>
+
+        <span>coins<span id="coins-collected">0</span></span>
+
+        <span>Score<span id="enemies-killed">0</span></span>
+
+
+        <span><span></span><img src="b1.png"></span>
+
+
+      </div>
+
+      <div id="moveLeftButton"></div>
+      <div id="moveRightButton"></div>
+      <div id="jumpButton"></div>
+      <div id="fireButton"></div>
+      <div id="tireButton"></div>
+      <div id="moveUpButton"></div>
+      <div id="moveDownButton"></div>
+      
+
+
+    <span ><div id="health2"></div><span></span></span>
+  
+  
+    <span><span></span><div id="health"></div></span>
+
+
+
+
+
+    </div>
+
+
+    <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // تحديد وقت العد التنازلي بالثواني
+        var countdown = 100;
+
+        var timerDisplay = document.getElementById('timer');
+
+        // دالة تحديث وقت العد التنازلي
+        function updateTimer() {
+            timerDisplay.innerText = countdown;
+            countdown--;
+
+            // إذا وصل العد التنازلي إلى صفر
+            if (countdown < 0) {
+                clearInterval(timerInterval);
+                endGame();
+            }
+        }
+
+        // تحديث وقت العد التنازلي كل ثانية
+        var timerInterval = setInterval(updateTimer, 1000);
+
+        // دالة انتهاء اللعبة
+        function endGame() {
+          //  gameOverMessage.innerText = "time is over";
+          showGameOverBox();
+        
+        let playerRect = player.getBoundingClientRect();
+        let playerX = playerRect.left;
+        let playerY = playerRect.top;
+        
+        let player9 = document.getElementById("player9");
+        let player9Rect = player9.getBoundingClientRect();
+        let player9Width = player9Rect.width;
+        let player9Height = player9Rect.height;
+        
+        player.style.display = "none";
+        const audio = new Audio("player1.mp3"); // تحميل الصوت هنا
+        audio.play(); // تشغيل الصوت
+        player9.style.position = "absolute";
+        player9.style.display = "block";
+        player9.style.left = (playerX + player9Width/2) + "px";
+        player9.style.top = (playerY + player9Height/2) + "px";
+        
+    }
+
+
+
+
+
+
+
+
+
+                    var isPlayerFlipped = false;
+
+
+                    var background = document.getElementById('background');
+
+                    var platform1 = document.getElementById('platform1');
+                    var platform2 = document.getElementById('platform2');
+                    var platform3 = document.getElementById('platform3');
+                    var platform4 = document.getElementById('platform4');
+                    var platform5 = document.getElementById('platform5');
+                    var platform6 = document.getElementById('platform6');
+                    var platform7 = document.getElementById('platform7');
+                    var platform8 = document.getElementById('platform8');
+
+                    var player = document.getElementById('player');
+                    let player8 = document.getElementById("player8");
+
+                    var moveLeftButton = document.getElementById('moveLeftButton');
+                    var moveRightButton = document.getElementById('moveRightButton');
+                    var moveUpButton = document.getElementById('moveUpButton');
+                    var moveDownButton = document.getElementById('moveDownButton');
+                    var jumpButton = document.getElementById('jumpButton');
+                    var fireButton = document.getElementById('fireButton');
+                    var tireButton = document.getElementById('tireButton');
+
+                    var cameraPosition = 0;
+                    var currentPosition = 150;
+                    var screenWidth = window.innerWidth;
+
+                    // حساب السرعة الخاصة بالخلفية وتطبيقها على المنصات
+                    var backgroundSpeed = 1; // سرعة الخلفية
+
+                    var moveLeftInterval;
+                    var moveRightInterval;
+
+
+
+
+
+                    moveLeftButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند لمس الزر
+                        isFacingRight = false;
+                        player.style.backgroundImage = "url('player2.gif')";
+                        player.style.transform = 'scaleX(-1)';
+
+                        moveLeftInterval = setInterval(function() {
+                            if (currentPosition > 80) { // يسارا
+                                currentPosition -= 1.5; // زيادة القيمة إلى 0
+                                updateCamera();
+                            }
+                        }, 10);
+                    });
+
+                    moveRightButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند لمس الزر
+                        isFacingRight = true;
+                        player.style.backgroundImage = "url('player3.gif')";
+                        player.style.transform = 'scaleX(1)';
+
+                        moveRightInterval = setInterval(function() {
+                            if (currentPosition < 2000) { // يمينا
+                                currentPosition += 1.5; // زيادة القيمة إلى 1
+                                updateCamera();
+                            }
+                        }, 10);
+                    });
+
+                    moveLeftButton.addEventListener('touchend', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند رفع اللمس عن الزر
+                        clearInterval(moveLeftInterval);
+
+                        if (!isFacingRight) {
+                            player.style.backgroundImage = "url('player1.gif')";
+
+                        }
+                    });
+
+                    moveRightButton.addEventListener('touchend', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند رفع اللمس عن الزر
+                        clearInterval(moveRightInterval);
+
+                        if (isFacingRight) {
+                            player.style.backgroundImage = "url('player1.gif')";
+                        }
+                    });
+
+
+
+
+
+                    let playerTop = 230;
+                    let barrierTop = 140;
+                    let moveUpInterval;
+                    let moveDownInterval;
+
+                    // Add event listener for touchstart events on moveUpButton
+                    moveUpButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault();
+                        isFacingRight = false;
+                        player.style.backgroundImage = "url('player4.gif')";
+
+                        moveUpInterval = setInterval(function() {
+                            if (playerTop > 140) {
+                                playerTop -= 1.5;
+                                checkCollision();
+                                updatePlayerPosition();
+                            }
+                        }, 10);
+                    });
+
+                    // Add event listener for touchend events on moveUpButton
+                    moveUpButton.addEventListener('touchend', function(event) {
+                        event.preventDefault();
+                        clearInterval(moveUpInterval);
+
+                    if (!isFacingRight) {
+                    player.style.backgroundImage = "url('player1.gif')";
+
+                    }
+
+
+                    });
+
+                    // Add event listener for touchstart events on moveDownButton
+                    moveDownButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault();
+                        isFacingRight = true;
+                        player.style.backgroundImage = "url('player4.gif')";
+
+                        moveDownInterval = setInterval(function() {
+                            if (playerTop + 50 < window.innerHeight) {
+                                playerTop += 1.5;
+                                checkCollision();
+                                updatePlayerPosition();
+                            }
+                        }, 10);
+                    });
+
+                    moveDownButton.addEventListener('touchend', function(event) {
+                        event.preventDefault();
+                        clearInterval(moveDownInterval);
+                        
+                        if (isFacingRight) {
+                            player.style.backgroundImage = "url('player1.gif')";
+                        }
+                        else {
+                            player.style.backgroundImage = "url('player1.gif')";
+                        }
+                    });
+
+
+                    // Function to check collision with the barrier
+                    function checkCollision() {
+                        if (
+                            playerTop < barrierTop + 100 &&
+                            playerTop + 50 > barrierTop
+                        ) {
+                            // Move the player back to its previous position
+                            if (moveUpInterval) {
+                                playerTop += 1.5;
+                            } else if (moveDownInterval) {
+                                playerTop -= 1.5;
+                            }
+                        }
+                    }
+
+                    // Function to update the player's position on the screen
+                    function updatePlayerPosition() {
+                        player.style.top = playerTop + "px";
+                    }
+
+
+                    var isJumping = false;
+
+                    function jump() {
+                        if (!isJumping) {
+                            isJumping = true;
+                            var initialPosition = playerTop;
+                            var jumpHeight = 60; // ارتفاع القفزة المطلوب
+                    // تغيير صورة اللاعب إلى الصورة المطلوبة أثناء القفز
+                    player.style.backgroundImage = "url('player4.png')";
+
+                    setTimeout(function() {
+                        player.style.transition = 'bottom 0.8s'; // تحديد مدة الانتقال للأسفل
+                        player.style.bottom = '50px';
+
+                        // تغيير صورة اللاعب إلى الصورة المطلوبة بعد النزول من القفز
+                        player.style.backgroundImage = "url('player5.png')";
+
+                        setTimeout(function() {
+                            isJumping = false;
+                            // استعادة صورة اللاعب الأصلية بعد الانتهاء من القفز
+                            player.style.backgroundImage = "url('player1.gif')";
+                        }, 500); // انتظر 500 مللي ثانية قبل تعيين isJumping إلى false
+                    }, 700); // انتظر 700 مللي ثانية قبل النزول
+
+                    var jumpUpInterval = setInterval(function() {
+                        if (playerTop > initialPosition - jumpHeight) {
+                            playerTop -= 1.5;
+                            updatePlayerPosition();
+                        } else {
+                            clearInterval(jumpUpInterval);
+
+                            var jumpDownInterval = setInterval(function() {
+                                if (playerTop < initialPosition) {
+                                    playerTop += 1.5;
+                                    updatePlayerPosition();
+                                } else {
+                                    clearInterval(jumpDownInterval);
+                                    isJumping = false;
+                                }
+                            }, 10);
+                        }
+                    }, 10);
+                }
+            }
+
+            jumpButton.addEventListener('touchstart', function(event) {
+                event.preventDefault(); // لمنع التمرير عند لمس الزر
+                jump();
+            });
+
+
+
+
+
+
+
+
+
+                    function updatePlatforms() {
+                        var platformPosition = cameraPosition * backgroundSpeed; // حساب موضع المنصات على الشاشة
+
+                        platform2.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform1.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform3.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform4.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform5.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform6.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform7.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform8.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+
+                    }
+
+                    function updateCamera() {
+  var speedcamera = 0.2; // تعديل السرعة هنا (أقل قيمة تعني حركة أبطأ)
+  
+  var playerPosition = 200 - currentPosition; // زيادة قيمة الموضع الافتراضي للعبة لزيادة المسافة
+  cameraPosition = (playerPosition - screenWidth / 8) * 16 * speedcamera; // ضعف قيمة موضع الكاميرا على الخلفية
+  if (cameraPosition < -18000) {
+    // الحد الأيسر للحركة
+    cameraPosition = -18000;
+  }
+  if (cameraPosition > 0) {
+    // الحد الأيمن للحركة
+    cameraPosition = 0;
+  }
+
+  if (currentPosition > screenWidth - playerWidth) {
+    currentPosition = screenWidth - playerWidth;
+  }
+
+  background.style.backgroundPosition = cameraPosition + 'px'; // تحديث خاصية backgroundPosition لتحريك الخلفية
+  updatePlatforms(); // تحديث المنصات
+  player.style.left = currentPosition + 'px'; // تحديث خاصية left لتحريك اللاعب على الشاشة
+}
+
+setInterval(function() {
+  updateCamera(); // تحديث الكاميرا بشكل مستمر
+}, 20);
+
+
+
+
+
+
+                    const audio1 = document.getElementById("audio1");
+                    let isTouchStart1 = false;
+                    let intervalId1 = null;
+                    audio1.currentTime = 0;
+                    audio1.play();
+
+
+
+
+                const audio2 = document.getElementById("audio2");
+                let isTouchStart2 = false;
+                let intervalId2 = null;
+
+                const button2 = document.getElementById("fireButton");
+
+                button2.addEventListener("touchstart", () => {
+                if (!isTouchStart2) {
+                    audio2.currentTime = 0;
+                    audio2.play();
+                    intervalId2 = setInterval(() => {
+                    audio2.currentTime = 0;
+                    audio2.play();
+                    }, audio2.duration * 1000);
+                    isTouchStart2 = true;
+                }
+                });
+
+                button2.addEventListener("touchend", () => {
+                if (isTouchStart2) {
+                    clearInterval(intervalId2);
+                    audio2.pause();
+                    intervalId2 = null;
+                    isTouchStart2 = false;
+                }
+                });
+
+
+
+                const audio3 = document.getElementById("audio3");
+                let isTouchStart3 = false;
+                let intervalId3 = null;
+
+                const button3 = document.getElementById("tireButton");
+
+                button3.addEventListener("touchstart", () => {
+                if (!isTouchStart3) {
+                    audio3.currentTime = 0;
+                    audio3.play();
+                    intervalId3 = setInterval(() => {
+                    audio3.currentTime = 0;
+                    audio3.play();
+                    }, audio3.duration * 1000);
+                    isTouchStart3 = true;
+                }
+                });
+
+                button3.addEventListener("touchend", () => {
+                if (isTouchStart3) {
+                    clearInterval(intervalId3);
+                    audio3.pause();
+                    intervalId3 = null;
+                    isTouchStart3 = false;
+                }
+                });
+
+                    
+                const audio4 = document.getElementById("audio4");
+                let isTouchStart4 = false;
+                let intervalId4 = null;
+
+                const button4 = document.getElementById("jumpButton");
+
+                button4.addEventListener("touchstart", () => {
+                if (!isTouchStart4) {
+                    audio4.currentTime = 0;
+                    audio4.play();
+                    intervalId4 = setInterval(() => {
+                    audio4.currentTime = 0;
+                    audio4.play();
+                    }, audio4.duration * 1000);
+                    isTouchStart4 = true;
+                }
+                });
+
+                button4.addEventListener("touchend", () => {
+                if (isTouchStart4) {
+                    clearInterval(intervalId4);
+                    audio4.pause();
+                    intervalId4 = null;
+                    isTouchStart4 = false;
+                }
+                });
+                        
+                        
+                const audio5 = document.getElementById("audio5");
+                let isTouchStart5 = false;
+                let intervalId5 = null;
+
+                const button5 = document.getElementById("moveRightButton");
+
+                button5.addEventListener("touchstart", () => {
+                if (!isTouchStart5) {
+                    audio5.currentTime = 0;
+                    audio5.play();
+                    intervalId5 = setInterval(() => {
+                    audio5.currentTime = 0;
+                    audio5.play();
+                    }, audio5.duration * 1000);
+                    isTouchStart5 = true;
+                }
+                });
+
+                button5.addEventListener("touchend", () => {
+                if (isTouchStart5) {
+                    clearInterval(intervalId5);
+                    audio5.pause();
+                    intervalId5 = null;
+                    isTouchStart5 = false;
+                }
+                });
+
+
+                const audio6 = document.getElementById("audio6");
+                let isTouchStart6 = false;
+                let intervalId6 = null;
+
+                const button6 = document.getElementById("moveLeftButton");
+
+                button6.addEventListener("touchstart", () => {
+                if (!isTouchStart6) {
+                    audio6.currentTime = 0;
+                    audio6.play();
+                    intervalId6 = setInterval(() => {
+                    audio6.currentTime = 0;
+                    audio6.play();
+                    }, audio6.duration * 1000);
+                    isTouchStart6 = true;
+                }
+                });
+
+                button6.addEventListener("touchend", () => {
+                if (isTouchStart6) {
+                    clearInterval(intervalId6);
+                    audio6.pause();
+                    intervalId6 = null;
+                    isTouchStart6 = false;
+                }
+                });
+                        
+                        
+
+
+
+
+        
+                const enemiesKilled = document.getElementById("enemies-killed");
+                const gameTime = document.getElementById("game-time");
+        
+                let killed = 0;
+                let time = 0;
+        
+        
+        
+        
+                const gameOverBox = document.getElementById("game-over-box");
+                const restartButton = document.getElementById("restart-button");
+                const scoreSpan = document.getElementById("score");
+                const showGameOverBox = () => {
+                scoreSpan.textContent = killed;
+                gameOverBox.style.display = "block";
+                clearInterval(intervalId);
+                };
+                // restart game when restart button is clicked
+                restartButton.addEventListener("click", () => {
+                window.location.reload();
+                });
+        
+        
+                const youWinBox = document.getElementById("you-win-box");
+                const nextButton = document.getElementById("next-button");
+                const showYouWinBox = () => {
+                scoreSpan.textContent = killed;
+                youWinBox.style.display = "block";
+                clearInterval(intervalId);
+                };
+                // restart game when restart button is clicked
+                nextButton.addEventListener("click", () => {
+                window.location.href = "page02.html";
+                });
+
+
+
+
+
+
+
+
+
+                var isEnemyHit = false; // متغير لتتبع ما إذا تصادم السيف بالعدو أم لا
+                var isSwordVisible = false; // حالة السيف: مرئي (true) أو غير مرئي (false)
+                var intervalId;
+
+                fireButton.addEventListener("touchstart", function() {
+                    if (!isSwordVisible) {
+                        isSwordVisible = true; // تحديث حالة السيف إلى مرئي
+
+                        function launchSword() {
+
+
+                          
+                            sword.style.display = "block"; // إظهار السيف
+                            var playerPosition = document.getElementById("player").getBoundingClientRect();
+                            var playerCenterX = playerPosition.left + playerPosition.width / 2;
+                            sword.style.left = playerCenterX - sword.offsetWidth / 2 - playerPosition.left + "px"; // تحويله إلى الموضع الأفقي المطلوب
+                            sword.style.transition = "none"; // تعطيل الانتقال الافتراضي
+
+                            var distance = 800; // المسافة الكلية للانتقال
+                            var speed = 10; // سرعة الحركة بالبكسلات في كل إطار
+                            var currentPosition = 0; // الموقع الحالي للسيف
+
+                            function moveSword() {
+                                currentPosition += speed; // زيادة الموقع الحالي بمقدار السرعة
+
+                                // التحقق من الانتهاء من الانتقال
+                                if (currentPosition >= distance) {
+                                    sword.style.display = "none"; // إخفاء السيف عند الانتهاء
+                                    isSwordVisible = false; // تحديث حالة السيف إلى غير مرئي
+                                } else {
+                                    sword.style.left = currentPosition + "px"; // تحديث موقع السيف
+                                    requestAnimationFrame(moveSword); // استدعاء الدالة في الإطار التالي للحركة المستمرة
+                                }
+                            }
+
+                            moveSword(); // بدء الحركة
+                        }
+
+                        intervalId = setInterval(launchSword, 800); // تكرار إطلاق السيوف بفارق زمني 0.5 ثانية
+                    }
+                });
+
+                fireButton.addEventListener("touchend", function() {
+                    isSwordVisible = false; // تحديث حالة السيف إلى غير مرئي عند رفع الإصبع
+                    clearInterval(intervalId); // إيقاف تكرار إطلاق السيوف
+                });
+
+
+                
+                        
+
+
+                let enemysCollected = 0;
+                let enemy1Alive = true;
+                let enemy2Alive = true;
+                let enemy3Alive = true;
+                let enemy4Alive = true;
+                let enemy5Alive = true;
+                let enemy6Alive = true;
+                let enemy7Alive = true;
+                let enemy8Alive = true;
+
+                function updateenemysCollected() {
+                  enemysCollected++;
+                  document.getElementById("enemies-killed").textContent = enemysCollected;
+                }
+
+                function checkCollision6() {
+
+                  
+                        if (enemysCollected >= 5) {
+                          showYouWinBox();
+                            let playerRect = player.getBoundingClientRect();
+                  let playerX = playerRect.left;
+                  let playerY = playerRect.top;
+                  let playerWidth = playerRect.width;
+                  let playerHeight = playerRect.height;
+
+                  let player8 = document.getElementById("player8");
+                  let player8Rect = player8.getBoundingClientRect();
+                  let player8Width = player8Rect.width;
+                  let player8Height = player8Rect.height;
+
+                  player.style.visibility = "hidden";  // إخفاء اللاعب 1 بدلاً من إخفائه بالكامل
+
+                  player8.style.position = "absolute";
+                  player8.style.display = "block";
+                  player8.style.left = (playerX + playerWidth/2 - player8Width/2) + "px";
+                  player8.style.top = (playerY + playerHeight/2 - player8Height/2) + "px";
+
+                  setTimeout(function() {
+                    player.style.visibility = "visible";  // إعادة ظهور اللاعب 1 بعد انتهاء العرض
+                    player8.style.display = "none";
+                  }, 50000);
+                }
+
+
+
+
+                  if (isColliding2(sword, enemy1, player) && enemy1Alive) {
+                    enemy1Alive = false;
+                    const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                    audio.play(); // تشغيل الصوت
+                    enemy1.style.display = "none";
+                        sword.style.display = "none";
+
+                    enemysCollected++;
+                    document.getElementById("enemies-killed").innerHTML = enemysCollected;
+                    // تحديث حالة اللاعب للموت
+                    // الشفرة الأخرى هنا
+
+
+                  } else if (isColliding2(sword, enemy2) && enemy2Alive) {
+                    enemy2Alive = false;
+                    const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                    audio.play(); // تشغيل الصوت
+                    enemy2.style.display = "none";
+                        sword.style.display = "none";
+
+                    enemysCollected++;
+                    document.getElementById("enemies-killed").innerHTML = enemysCollected;
+                    // تحديث حالة اللاعب للموت
+                    // الشفرة الأخرى هنا
+
+
+                  } else if (isColliding2(sword, enemy3) && enemy3Alive) {
+                    enemy3Alive = false;
+                    const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                    audio.play(); // تشغيل الصوت
+                    enemy3.style.display = "none";
+                        sword.style.display = "none";
+
+                    enemysCollected++;
+                    document.getElementById("enemies-killed").innerHTML = enemysCollected;
+                    // تحديث حالة اللاعب للموت
+                    // الشفرة الأخرى هنا
+
+
+                  } else if (isColliding2(sword, enemy4) && enemy4Alive) {
+                    enemy4Alive = false;
+                    const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                    audio.play(); // تشغيل الصوت
+                    enemy4.style.display = "none";
+                    sword.style.display = "none";
+                    enemysCollected++;
+                    document.getElementById("enemies-killed").innerHTML = enemysCollected;
+                    // تحديث حالة اللاعب للموت
+                    // الشفرة الأخرى هنا
+
+
+
+                  } else if (isColliding2(sword, enemy5) && enemy5Alive) {
+                    enemy5Alive = false;
+                    const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                    audio.play(); // تشغيل الصوت
+                    enemy5.style.display = "none";
+                        sword.style.display = "none";
+
+                    enemysCollected++;
+                    document.getElementById("enemies-killed").innerHTML = enemysCollected;
+
+
+                  } else if (isColliding2(sword, enemy6) && enemy6Alive) {
+                    enemy6Alive = false;
+                    const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                    audio.play(); // تشغيل الصوت
+                    enemy6.style.display = "none";
+                        sword.style.display = "none";
+
+                    enemysCollected++;
+                    document.getElementById("enemies-killed").innerHTML = enemysCollected;
+
+
+
+
+                  } else if (isColliding2(sword, enemy7) && enemy7Alive) {
+                    enemy7Alive = false;
+                    const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                    audio.play(); // تشغيل الصوت
+                    enemy7.style.display = "none";
+                        sword.style.display = "none";
+
+                    enemysCollected++;
+                    document.getElementById("enemies-killed").innerHTML = enemysCollected;
+                    // تحديث حالة اللاعب للموت
+                    // الشفرة الأخرى هنا
+
+
+                  } else if (isColliding2(sword, enemy8) && enemy8Alive) {
+                    enemy8Alive = false;
+                    const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                    audio.play(); // تشغيل الصوت
+                    enemy8.style.display = "none";
+                        sword.style.display = "none";
+
+                    enemysCollected++;
+                    document.getElementById("enemies-killed").innerHTML = enemysCollected;
+                    // تحديث حالة اللاعب للموت
+                    // الشفرة الأخرى هنا
+                  }
+
+                        
+                        
+                }
+
+                // تابع للتحقق من الاصطدام بين عنصرين
+                function isColliding2(element1, element2) {
+                  var element1Rect = element1.getBoundingClientRect();
+                  var element2Rect = element2.getBoundingClientRect();
+
+                  return !(
+                    element1Rect.bottom < element2Rect.top ||
+                    element1Rect.top > element2Rect.bottom ||
+                    element1Rect.right < element2Rect.left ||
+                    element1Rect.left > element2Rect.right
+                  );
+                }
+
+                // استدعاء التابع checkCollision كل ثانية للتحقق من حدوث اصطدام
+                setInterval(checkCollision6, 50);
+                      
+
+
+
+                
+                
+                let fireInterval; // متغير لحفظ المؤقت الذي يقوم بتنفيذ الاطلاق المستمر
+
+                document.getElementById("fireButton").addEventListener("touchstart", () => {
+                    if (!isFiring) {
+                        isFiring = true;
+                        fireInterval = setInterval(fire, 300); // تحديد فاصل زمني لتنفيذ الاطلاق المستمر
+                        fireSword(); // استدعاء دالة fireSword لعرض السيف
+                    }
+                });
+
+                document.getElementById("fireButton").addEventListener("touchend", () => {
+                    if (isFiring) {
+                        isFiring = false;
+                        clearInterval(fireInterval); // إلغاء التكرار عند رفع الإصبع عن الزر
+                        currentPlayer = 1;
+                        player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+                    }
+                });
+
+
+               var isFiring = false;
+
+                  function fire() {
+                 currentPlayer = 6; // تحديد اللاعب السادس كلاعب حالي عند الضغط على الزر
+
+                  // تحديث صورة اللاعب وفقًا للاعب الحالي
+                  player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+                 }
+
+
+
+
+                    let tireInterval; // متغير لحفظ المؤقت الذي يقوم بتنفيذ الاطلاق المستمر
+
+                    document.getElementById("tireButton").addEventListener("touchstart", () => {
+                        if (!isFiring) {
+                            isFiring = true;
+                            tireInterval = setInterval(tire, 300); // تحديد فاصل زمني لتنفيذ الاطلاق المستمر
+                        }
+                    });
+
+                    document.getElementById("tireButton").addEventListener("touchend", () => {
+                        if (isFiring) {
+                            isFiring = false;
+                            clearInterval(tireInterval); // إلغاء التكرار عند رفع الإصبع عن الزر
+                            currentPlayer = 1;
+                            player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+                        }
+                    });
+
+                    var isFiring = false;
+
+                    function tire() {
+                        currentPlayer = 10; // تحديد اللاعب السادس كلاعب حالي عند الضغط على الزر
+
+                        // تحديث صورة اللاعب وفقًا للاعب الحالي
+                        player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+                    }
+                    
+                    
+
+
+                          
+                          
+                          
+                            
+                          
+
+                          
+
+                  let coinsCollected = 0;
+                  let coin1Alive = true;
+                  let coin2Alive = true;
+                  let coin3Alive = true;
+                  let coin4Alive = true;
+                  let coin5Alive = true;
+                  let coin6Alive = true;
+                  let coin7Alive = true;
+                  let coin8Alive = true;
+
+
+
+                  function updatecoinsCollected() {
+                    coinsCollected++;
+                    document.getElementById("coins-collected").textContent = coinsCollected;
+                  }
+
+                  function checkCollision7() {
+                    if (isColliding2(player, coin1) && coin1Alive) {
+                      coin1Alive = false;
+                      const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                      audio.play(); // تشغيل الصوت
+                      coin1.style.display = "none";
+                      coinsCollected++;
+                      document.getElementById("coins-collected").innerHTML = coinsCollected;
+                      // تحديث حالة اللاعب للموت
+
+                      // الشفرة الأخرى هنا
+                    } else if (isColliding2(player, coin2) && coin2Alive) {
+                      coin2Alive = false;
+                      const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                      audio.play(); // تشغيل الصوت
+                      coin2.style.display = "none";
+                      coinsCollected++;
+                      document.getElementById("coins-collected").innerHTML = coinsCollected;
+                      // تحديث حالة اللاعب للموت
+                      // الشفرة الأخرى هنا
+                    } else if (isColliding2(player, coin3) && coin3Alive) {
+                      coin3Alive = false;
+                      const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                      audio.play(); // تشغيل الصوت
+                      coin3.style.display = "none";
+                      coinsCollected++;
+                      document.getElementById("coins-collected").innerHTML = coinsCollected;
+                      // تحديث حالة اللاعب للموت
+                      // الشفرة الأخرى هنا
+                    } else if (isColliding2(player, coin4) && coin4Alive) {
+                      coin4Alive = false;
+                      const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                      audio.play(); // تشغيل الصوت
+                      coin4.style.display = "none";
+                      coinsCollected++;
+                      document.getElementById("coins-collected").innerHTML = coinsCollected;
+                      // تحديث حالة اللاعب للموت
+                      // الشفرة الأخرى هنا
+                    } else if (isColliding2(player, coin5) && coin5Alive) {
+                      coin5Alive = false;
+                      const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                      audio.play(); // تشغيل الصوت
+                      coin5.style.display = "none";
+                      coinsCollected++;
+                      document.getElementById("coins-collected").innerHTML = coinsCollected;
+
+
+                      // تحديث حالة اللاعب للموت
+                      // الشفرة الأخرى هنا
+                    } else if (isColliding2(player, coin6) && coin6Alive) {
+                      coin6Alive = false;
+                      const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                      audio.play(); // تشغيل الصوت
+                      coin6.style.display = "none";
+                      coinsCollected++;
+                      document.getElementById("coins-collected").innerHTML = coinsCollected;
+                      // تحديث حالة اللاعب للموت
+                      // الشفرة الأخرى هنا
+      
+                    } else if (isColliding2(player, coin7) && coin7Alive) {
+                      coin7Alive = false;
+                      const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+                      audio.play(); // تشغيل الصوت
+                      coin7.style.display = "none";
+                      coinsCollected++;
+                      document.getElementById("coins-collected").innerHTML = coinsCollected;
+                      // تحديث حالة اللاعب للموت
+                      // الشفرة الأخرى هنا
+                    } else if (isColliding2(player, coin8) && coin8Alive) {
+    coin8Alive = false;
+    const audio = new Audio("gogo.mp3"); // تحميل الصوت هنا
+    audio.play(); // تشغيل الصوت
+    setTimeout(function() {
+        window.location.href = "page02.html";
+    }, 5000); // تأخير لمدة 5 ثوانٍ (5000 مللي ثانية)
+
+    coinsCollected++;
+    document.getElementById("coins-collected").innerHTML = coinsCollected;
+    // تحديث حالة اللاعب للموت
+    // الشفرة الأخرى هنا
+}
+
+                  }
+
+                  // تابع للتحقق من الاصطدام بين عنصرين
+                  function isColliding2(element1, element2) {
+                    var element1Rect = element1.getBoundingClientRect();
+                    var element2Rect = element2.getBoundingClientRect();
+
+                    return !(
+                      element1Rect.bottom < element2Rect.top ||
+                      element1Rect.top > element2Rect.bottom ||
+                      element1Rect.right < element2Rect.left ||
+                      element1Rect.left > element2Rect.right
+                    );
+                  }
+
+                  // استدعاء التابع checkCollision كل ثانية للتحقق من حدوث اصطدام
+                  setInterval(checkCollision7, 10);
+        
+
+
+
+        
+        
+                    var platform1 = document.getElementById("platform1");
+                    var platform2 = document.getElementById("platform2");
+                    var platform3 = document.getElementById("platform3");
+                    var platform4 = document.getElementById("platform4");
+                    var platform5 = document.getElementById("platform5");
+                    var platform6 = document.getElementById("platform6");
+                    var platform7 = document.getElementById("platform7");
+                    var platform8 = document.getElementById("platform8");
+        
+                  
+                    var enemy1 = document.getElementById("enemy1");
+                    var enemy2 = document.getElementById("enemy2");
+                    var enemy3 = document.getElementById("enemy3");
+                    var enemy4 = document.getElementById("enemy4");
+                    var enemy5 = document.getElementById("enemy5");
+                    var enemy6 = document.getElementById("enemy6");
+                    var enemy7 = document.getElementById("enemy7");
+                    var enemy8 = document.getElementById("enemy8");
+        
+                    var enemy1Left = 5;
+                    var enemy1Top = 0;
+                    var enemy1Speed = 0.20;
+                    var enemy1Direction = 1;
+        
+                    var enemy2Left = 5;
+                    var enemy2Top = 0;
+                    var enemy2Speed = 0.80;
+                    var enemy2Direction = -1;
+
+                            
+                    var enemy3Left = 5;
+                    var enemy3Top = 0;
+                    var enemy3Speed = 0.80;
+                    var enemy3Direction = 1;
+        
+            
+                    var enemy4Left = 5;
+                    var enemy4Top = 0;
+                    var enemy4Speed = 0.80;
+                    var enemy4Direction = -1;
+        
+        
+                    var enemy5Left = 5;
+                    var enemy5Top = 0;
+                    var enemy5Speed = 0.80;
+                    var enemy5Direction = -1;
+        
+        
+                    var enemy6Left = 0;
+                    var enemy6Top = 0;
+                    var enemy6Speed = 0;
+                    var enemy6Direction = 1;
+        
+        
+                    var enemy7Left = 0;
+                    var enemy7Top = 0;
+                    var enemy7Speed = -2;
+                    var enemy7Direction = 1;
+                
+                    var enemy8Left = 5;
+                    var enemy8Top = 0;
+                    var enemy8Speed = 0.80;
+                    var enemy8Direction = 1;
+        
+        
+        
+                    var currentIndex = 1;
+                    var isMovingRight = false;
+                    var isMovingLeft = false;
+                    var moveInterval = true;
+        
+        
+        
+                    function updateEnemy() {
+        
+                      var platform1Top = platform1.offsetTop;
+                      var platform2Top = platform2.offsetTop;
+                      var platform3Top = platform3.offsetTop;
+                      var platform4Top = platform4.offsetTop;
+                      var platform5Top = platform5.offsetTop;
+                      var platform6Top = platform6.offsetTop;
+                      var platform7Top = platform7.offsetTop;
+                      var platform8Top = platform8.offsetTop;
+                    
+                      enemy1Left += enemy1Speed * enemy1Direction;
+                      enemy2Left += enemy2Speed * enemy2Direction;
+                      enemy3Left += enemy3Speed * enemy3Direction;
+                      enemy4Left += enemy4Speed * enemy4Direction;
+                      enemy5Left += enemy5Speed * enemy5Direction;
+                      enemy6Left += enemy6Speed * enemy6Direction;
+                      enemy7Left += enemy7Speed * enemy7Direction;
+                      enemy8Left += enemy8Speed * enemy8Direction;
+                    
+                    if (enemy1Left + enemy1.offsetWidth >= platform1.offsetWidth) {
+                      enemy1Direction = -1;
+                    } else if (enemy1Left <= 0) {
+                      enemy1Direction = 1;
+                    }
+                    
+                    if (enemy1Top + enemy1.offsetHeight >= platform1Top) {
+                      enemy1Top = platform1Top - enemy1.offsetHeight;
+                    }
+                    
+                    enemy1.style.left = enemy1Left + "px";
+                    enemy1.style.top = enemy1Top + "px";
+                    
+                    if (enemy1Direction == 1) {
+                      enemy1.style.transform = "scaleX(1)";
+                    } else {
+                      enemy1.style.transform = "scaleX(-1)";
+                    }
+        
+        
+                    if (enemy2Left + enemy2.offsetWidth >= platform2.offsetWidth) {
+                      enemy2Direction = 1;
+                    } else if (enemy2Left <= 0) {
+                      enemy2Direction = -1;
+                    }
+                    
+                    if (enemy2Top + enemy2.offsetHeight >= platform2Top) {
+                      enemy2Top = platform2Top - enemy2.offsetHeight;
+                    }
+                    
+                    enemy2.style.left = enemy2Left + "px";
+                    enemy2.style.top = enemy2Top + "px";
+                    
+                    if (enemy2Direction == 1) {
+                      enemy2.style.transform = "scaleX(1)";
+                    } else {
+                      enemy2.style.transform = "scaleX(-1)";
+                    }
+          
+        
+                    if (enemy3Left + enemy3.offsetWidth >= platform3.offsetWidth) {
+                      enemy3Direction = -1;
+                    } else if (enemy3Left <= 0) {
+                      enemy3Direction = 1;
+                    }
+                    
+                    if (enemy3Top + enemy3.offsetHeight >= platform3Top) {
+                      enemy3Top = platform3Top - enemy3.offsetHeight;
+                    }
+                    
+                    enemy3.style.left = enemy3Left + "px";
+                    enemy3.style.top = enemy3Top + "px";
+                    
+                    if (enemy3Direction == 1) {
+                      enemy3.style.transform = "scaleX(1)";
+                    } else {
+                      enemy3.style.transform = "scaleX(-1)";
+                    }
+        
+        
+                    if (enemy4Left + enemy4.offsetWidth >= platform4.offsetWidth) {
+                      enemy4Direction = 1;
+                    } else if (enemy4Left <= 0) {
+                      enemy4Direction = -1;
+                    }
+                    
+                    if (enemy4Top + enemy4.offsetHeight >= platform4Top) {
+                      enemy4Top = platform4Top - enemy4.offsetHeight;
+                    }
+                    
+                    enemy4.style.left = enemy4Left + "px";
+                    enemy4.style.top = enemy4Top + "px";
+                    
+                    if (enemy4Direction == 1) {
+                      enemy4.style.transform = "scaleX(1)";
+                    } else {
+                      enemy4.style.transform = "scaleX(-1)";
+                    }
+        
+        
+        
+                    if (enemy5Left + enemy5.offsetWidth >= platform5.offsetWidth) {
+                      enemy5Direction = 1;
+                    } else if (enemy5Left <= 0) {
+                      enemy5Direction = -1;
+                    }
+                    
+                    if (enemy5Top + enemy5.offsetHeight >= platform5Top) {
+                      enemy5Top = platform5Top - enemy5.offsetHeight;
+                    }
+                    
+                    enemy5.style.left = enemy5Left + "px";
+                    enemy5.style.top = enemy5Top + "px";
+                    
+                    if (enemy5Direction == 1) {
+                      enemy5.style.transform = "scaleX(1)";
+                    } else {
+                      enemy5.style.transform = "scaleX(-1)";
+                    }
+        
+        
+        
+                    if (enemy6Left + enemy6.offsetWidth >= platform6.offsetWidth) {
+                      enemy6Direction = -1;
+                    } else if (enemy6Left <= 0) {
+                      enemy6Direction = +1;
+                    }
+                    
+                    if (enemy6Top + enemy6.offsetHeight >= platform6Top) {
+                      enemy6Top = platform6Top - enemy6.offsetHeight;
+                    }
+                    
+                    enemy6.style.left = enemy6Left + "px";
+                    enemy6.style.top = enemy6Top + "px";
+                    
+                    if (enemy6Direction == 1) {
+                      enemy6.style.transform = "scaleX(1)";
+                    } else {
+                      enemy6.style.transform = "scaleX(-1)";
+                    }
+        
+                          
+
+                    // تحديث إتجاه العدو عند الوصول إلى حافة المنصة
+                    if (enemy7Left + enemy7.offsetWidth >= platform7.offsetWidth) {
+                      enemy7Direction = -1;
+                    } else if (enemy7Left <= 0) {
+                      enemy7Direction = 1;
+                    }
+
+                    // تحديث موقع العدو بناءً على الاتجاه الحالي
+                    enemy7Left += enemy7Direction * 3;
+                    enemy7.style.left = enemy7Left + "px";
+
+                    // التحقق من أن العدو لا يخرج من الجزء العلوي للمنصة
+                    if (enemy7Top + enemy7.offsetHeight >= platform7Top) {
+                      enemy7Top = platform7Top - enemy7.offsetHeight;
+                    }
+
+                    enemy7.style.top = enemy7Top + "px";
+
+                    // تحديد التحول الأفقي للعدو وفقًا لاتجاهه
+                    if (enemy7Direction === 1) {
+                      enemy7.style.transform = "scaleX(1)";
+                    } else {
+                      enemy7.style.transform = "scaleX(-1)";
+                    }
+
+        
+                    if (enemy8Left + enemy8.offsetWidth >= platform8.offsetWidth) {
+                      enemy8Direction = -1;
+                    } else if (enemy8Left <= 0) {
+                      enemy8Direction = 1;
+                    }
+                    
+                    if (enemy8Top + enemy8.offsetHeight >= platform8Top) {
+                      enemy8Top = platform8Top - enemy8.offsetHeight;
+                    }
+                    
+                    enemy8.style.left = enemy8Left + "px";
+                    enemy8.style.top = enemy8Top + "px";
+                    
+                    if (enemy8Direction == 1) {
+                      enemy8.style.transform = "scaleX(1)";
+                    } else {
+                      enemy8.style.transform = "scaleX(-1)";
+                    }
+      
+      
+                    }
+                    setInterval(updateEnemy, 40);
+        
+        
+        
+
+
+
+
+                    var sword2X = 0;
+                    var sword2Y = 0;
+                    var enemy7X = 0;
+                    var direction = "right";
+                    var chasing = false;
+                    var playerWidth = player.offsetWidth;
+                    var swordDelay = 0;
+
+                    function moveEnemy7() {
+                      if (!chasing) {
+                        // Move enemy7 randomly left or right
+                        if (direction === "right") {
+                          enemy7X += 3;
+                          if (enemy7X + enemy7.offsetWidth > window.innerWidth) {
+                            direction = "left";
+                          }
+                        } else {
+                          enemy7X -= 3;
+                          if (enemy7X < 0) {
+                            direction = "right";
+                          }
+                        }
+                        enemy7.style.left = enemy7X + "px";
+
+                        // Check if enemy7 is close enough to start chasing
+                        if (Math.abs(player.offsetLeft - enemy7.offsetLeft) < 200) {
+                          chasing = true;
+                        }
+                      } else {
+                        // Chase the player
+                        if (enemy7.offsetLeft < player.offsetLeft) {
+                          enemy7X += 3;
+                        } else {
+                          enemy7X -= 3;
+                        }
+                        enemy7.style.left = enemy7X + "px";
+
+                        // Check if enemy7 is close enough to attack
+                        if (Math.abs(player.offsetLeft - enemy7.offsetLeft) < 200) {
+                          // Attack the player
+                          if (swordDelay === 0) {
+                            swordDelay = 3;
+                            setTimeout(function() {
+                              swordDelay = 0;
+                            }, 3000);
+                            sword2X = enemy7.offsetLeft + enemy7.offsetWidth / 2 - sword2.offsetWidth / 2;
+                            sword2Y = enemy7.offsetTop + enemy7.offsetHeight;
+                            sword2.style.left = sword2X + "px";
+                            sword2.style.top = sword2Y + "px";
+                            sword2.style.display = "block";
+
+                            // Attack the player every 3 seconds
+                            var sword2Interval = setInterval(function() {
+                              var playerTop = player.offsetTop;
+                              var sword2Top = sword2.offsetTop;
+
+                              // Check if sword2 hit the player
+                              if (Math.abs(player.offsetLeft - sword2X) < playerWidth && sword2Top > window.innerHeight - player.offsetHeight) {
+                                clearInterval(sword2Interval);
+                                sword2.style.display = "none";
+                                chasing = false;
+                              }
+
+                              // Check if sword2 hit the ground
+                              if (sword2Top > window.innerHeight) {
+                                clearInterval(sword2Interval);
+                                sword2.style.display = "none";
+                              }
+
+                              sword2Top += 1;
+                              sword2.style.top = sword2Top + "px";
+                            }, 30); // Attack every 3 seconds
+                          }
+                        }
+                      }
+                    }
+
+                    setInterval(moveEnemy7, 10000);
+
+
+
+
+//  موت اللاعب 2 ارواح
+
+
+                    let enemiesAlive = [true, true, true, true, true, true, true, true];
+
+                    let collisionCount = 0;
+                    let isPlayerAlive = true;
+                    let danceInterval;
+
+                    let health2Bar = document.getElementById("health2");
+                    let maxHealth2 = 100;
+                    let currentHealth2 = maxHealth2;
+
+                    function updateHealth2Bar() {
+                      health2Bar.style.width = (currentHealth2 / maxHealth2) * 100 + "%";
+                    }
+
+                    function decreaseHealth2(amount) {
+                      currentHealth2 -= amount;
+                      if (currentHealth2 <= 0) {
+                        currentHealth2 = 0;
+                        // تنفيذ إجراءات الموت هنا
+                      }
+                      updateHealth2Bar();
+                    }
+
+
+                    function checkCollision3() {
+                    if (isPlayerAlive) {
+                      for (let i = 0; i < enemiesAlive.length; i++) {
+                        if (enemiesAlive[i] && isColliding(player, getEnemyElement(i + 1))) {
+                          decreaseHealth2(96); // تقليل الصحة بمقدار 96
+                          collisionCount++;
+                          enemiesAlive[i] = false;
+                          if (collisionCount === 1) {
+                            // تحديث حالة اللاعب للرقص
+                            isPlayerAlive = false;
+                            danceInterval = setInterval(dancePlayer, 100);
+                            setTimeout(resetPlayerState, 3000);
+                          } else if (collisionCount === 2) {
+                            // تحديث حالة اللاعب للموت
+                            clearInterval(danceInterval);
+                            isPlayerAlive = false;
+                            showGameOverBox();
+                            let playerRect = player.getBoundingClientRect();
+                            let playerX = playerRect.left;
+                            let playerY = playerRect.top;
+                            let player9 = document.getElementById("player9");
+                            let player9Rect = player9.getBoundingClientRect();
+                            let player9Width = player9Rect.width;
+                            let player9Height = player9Rect.height;
+                            player.style.display = "none";
+                            const audio = new Audio("player1.mp3");
+                            audio.play();
+                            player9.style.position = "absolute";
+                            player9.style.display = "block";
+                            player9.style.left = playerX + player9Width / 2 + "px";
+                            player9.style.top = playerY + player9Height / 2 + "px";
+                            setTimeout(function () {
+                              player9.style.display = "none";
+                            }, 3000);
+                          }
+                        }
+                      }
+                    }
+                  }
+
+
+                  function getEnemyElement(index) {
+                    switch (index) {
+                      case 1:
+                        return document.getElementById("enemy1");
+                      case 2:
+                        return document.getElementById("enemy2");
+                        case 3:
+                        return document.getElementById("enemy3");
+                        case 4:
+                        return document.getElementById("enemy4");
+                        case 5:
+                        return document.getElementById("enemy5");
+                        case 6:
+                        return document.getElementById("enemy6");
+                        case 7:
+                        return document.getElementById("enemy7");
+                        case 8:
+                        return document.getElementById("enemy8");
+                        
+                    }
+                  }
+
+                    function dancePlayer() {
+                      if (player.style.display === "block") {
+                        player.style.display = "none";
+                      } else {
+                        player.style.display = "block";
+                      }
+                    }
+
+                    function resetPlayerState() {
+                      clearInterval(danceInterval);
+                      player.style.display = "block";
+                      isPlayerAlive = true;
+                    }
+
+                    // تابع للتحقق من الاصطدام بين عنصرين
+                    function isColliding(element1, element2) {
+                      var element1Rect = element1.getBoundingClientRect();
+                      var element2Rect = element2.getBoundingClientRect();
+
+                      return !(
+                        element1Rect.bottom < element2Rect.top ||
+                        element1Rect.top > element2Rect.bottom ||
+                        element1Rect.right < element2Rect.left ||
+                        element1Rect.left > element2Rect.right
+                      );
+                    }
+
+                    // استدعاء التابع checkCollision كل ثانية للتحقق من حدوث اصطدام
+                    setInterval(checkCollision3, 500);
+
+
+
+
+
+
+// تحديد تصادم السيف بالعدو
+
+                      function detectCollision() {
+                      var swordRect = sword.getBoundingClientRect();
+                      var enemyRect = enemy9.getBoundingClientRect();
+
+                      if (
+                        swordRect.right >= enemyRect.left &&
+                        swordRect.left <= enemyRect.right &&
+                        swordRect.bottom >= enemyRect.top &&
+                        swordRect.top <= enemyRect.bottom
+                      ) {
+                        sword.style.display = "none";
+                        swordAttack(); // إذا حدث تصادم، قم بتنفيذ هجوم السيف
+
+                        // تغيير صورة العدو عند موته
+                        enemy9.style.backgroundImage = "url('102.gif')"; // تعيين صورة اللون البرتقالي كخلفية للعدو
+                        setTimeout(function() {
+                          const audio = new Audio("dino2.mp3");
+                          audio.play();
+                          stopAllAudio();
+                          enemy9.style.backgroundImage = "url('102.gif')"; // تعيين صورة اللون الأحمر كخلفية للعدو
+                        }, 1);
+                      }
+                    }
+
+                    setInterval(detectCollision, 100); // فحص التصادم بشكل متكرر
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  قتل اللاعب بالرصاصة
+
+
+
+
+
+            var player = document.getElementById("player");
+            
+            const audio = new Audio("gnenmy.mp3"); // تحميل الصوت هنا
+            function playSound() {
+                audio.play(); // تشغيل الصوت
+            }
+                    setInterval(function() {
+
+            playSound();
+
+
+
+
+
+            var enemy6Rect = enemy6.getBoundingClientRect();
+            var playerRect = player.getBoundingClientRect();
+            
+            var enemy6CenterX = enemy6Rect.left + (enemy6Rect.width / 2);
+            var enemy6CenterY = enemy6Rect.top + (enemy6Rect.height / 2);
+            var playerCenterX = playerRect.left + (playerRect.width / 2);
+            var playerCenterY = playerRect.top + (playerRect.height / 2);
+            
+            var angle = Math.atan2(playerCenterY - enemy6CenterY, playerCenterX - enemy6CenterX);
+            var bullet = document.createElement("div");
+            bullet.id = "bullet";
+            bullet.style.left = enemy6CenterX + "px";
+            bullet.style.top = enemy6CenterY + "px";
+            document.body.appendChild(bullet);
+            
+            var bulletSpeed = 2;
+            var bulletMoveX = Math.cos(angle) * bulletSpeed;
+            var bulletMoveY = Math.sin(angle) * bulletSpeed;
+            
+            var bulletInterval = setInterval(function() {
+                var bulletRect = bullet.getBoundingClientRect();
+                
+                if (bulletRect.left < 0 || bulletRect.top < 0 || bulletRect.right > window.innerWidth || bulletRect.bottom > window.innerHeight) {
+                    clearInterval(bulletInterval);
+                    document.body.removeChild(bullet);
+                } else {
+                    bullet.style.left = bulletRect.left + bulletMoveX + "px";
+                    bullet.style.top = bulletRect.top + bulletMoveY + "px";
+                             if (bulletRect.left >= 1000) {
+                bullet.style.display = "none"; // قم بإخفاء الرصاصة
+                clearInterval(bulletInterval);
+                document.body.removeChild(bullet);
+            }
+
+                    var playerRect = player.getBoundingClientRect();
+                    var playerCenterX = playerRect.left + (playerRect.width / 2);
+                    var playerCenterY = playerRect.top + (playerRect.height / 2);
+                    
+                    if (
+                        playerCenterX >= bulletRect.left &&
+                        playerCenterX <= bulletRect.right &&
+                        playerCenterY >= bulletRect.top &&
+                        playerCenterY <= bulletRect.bottom
+                    ) {
+                        // تم تصادم اللاعب بالرصاصة
+
+                    //    player.style.backgroundColor = "red";
+                        
+
+                    bullet.style.display = "none"; // قم بإخفاء الكرة
+              
+                    showGameOverBox();
+                            let playerRect = player.getBoundingClientRect();
+                            let playerX = playerRect.left;
+                            let playerY = playerRect.top;
+                            let player9 = document.getElementById("player9");
+                            let player9Rect = player9.getBoundingClientRect();
+                            let player9Width = player9Rect.width;
+                            let player9Height = player9Rect.height;
+                            player.style.display = "none";
+                            const audio = new Audio("player1.mp3");
+                            audio.play();
+                            player9.style.position = "absolute";
+                            player9.style.display = "block";
+                            player9.style.left = playerX + player9Width / 2 + "px";
+                            player9.style.top = playerY + player9Height / 2 + "px";
+                            setTimeout(function () {
+                              player9.style.display = "none";
+                            }, 3000);
+                        clearInterval(bulletInterval);
+                        document.body.removeChild(bullet);
+                    }
+                }
+            }, 10);
+        }, 5000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </script>
+</body>
+</html>

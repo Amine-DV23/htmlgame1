@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>لعبة المنع</title>
+	<style>
+
+
+
+.container {
+			width: 600px;
+			margin: 0 auto;
+		}
+		body {
+			background-color: rgb(0, 7, 0);
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}	
+
+		.container {
+			width: 600px;
+			margin: 0 auto;
+		}
+
+	.player {
+		position: absolute;
+		left: 50px;
+		top: 25px;
+		height: 50px;
+		width: 50px;
+		background-color: green;
+	}
+
+	.enemy {
+		position: absolute;
+		right: 50px;
+		top: 25px;
+		height: 50px;
+		width: 50px;
+		background-color: red;
+	}
+
+	.sword {
+		position: absolute;
+		left: 100px;
+		top: 40px;
+		height: 30px;
+		width: 100px;
+		transform: rotate(-45deg);
+		background-color: silver;
+		z-index: 1;
+		display: none;
+	}
+</style>
+</head>
+<body onload="document.getElementById('game1').play()">
+
+	<div class="container">
+
+		<audio autoplay>
+			<source src="game1.mp3" type="audio/mp3">
+		  </audio>
+
+
+		  <audio id="game1">
+			<source src="audio_file.mp3" type="audio/mp3">
+		  </audio>
+		  
+
+
+
+
+
+		<h1>لعبة اللاعب والعدو</h1>
+		<p>في هذه اللعبة، أنت تلعب دور اللاعب وعليك إطلاق النار على العدو.</p>
+		<div class="game-board">
+			<div class="player"></div>
+			<div class="enemy"></div>
+			<div class="sword"></div>
+
+
+			  
+		</div>
+		<button onclick="launchSword()">إطلاق السيف</button>
+	</div>
+
+
+	<script>
+
+			var audio = document.getElementById("game1");
+			audio.play();
+
+		var sword = document.querySelector('.sword');
+		var enemy = document.querySelector('.enemy');
+		var player = document.querySelector('.player');
+		var swordPos = sword.getBoundingClientRect();
+		var enemyPos = enemy.getBoundingClientRect();
+		var playerPos = player.getBoundingClientRect();
+	
+		var speed = 5; // سرعة حركة السيف
+	
+		var dx = enemyPos.x - playerPos.x;
+		var dy = enemyPos.y - playerPos.y;
+		var angle = Math.atan2(dy, dx) * 180 / Math.PI;
+	
+		sword.style.transform = 'rotate(' + angle + 'deg)';
+		sword.style.left = playerPos.x + playerPos.width / 2 + 'px';
+		sword.style.top = playerPos.y + playerPos.height / 2 + 'px';
+		sword.style.display = 'block';
+	
+		var intervalId = setInterval(function() {
+			var swordPos = sword.getBoundingClientRect();
+	
+			// تحديد الاتجاه الذي يجب أن يسير عليه السيف
+			var directionX = enemyPos.x - swordPos.x;
+			var directionY = enemyPos.y - swordPos.y;
+			var distance = Math.sqrt(directionX * directionX + directionY * directionY);
+			var velocityX = directionX / distance * speed;
+			var velocityY = directionY / distance * speed;
+	
+			// تحريك السيف باتجاه العدو
+			sword.style.left = swordPos.left + velocityX + 'px';
+			sword.style.top = swordPos.top + velocityY + 'px';
+	
+			if (checkCollision(swordPos, enemyPos)) {
+				enemy.style.display = 'none';
+				clearInterval(intervalId);
+			}
+		}, 10);
+	
+		function checkCollision(rect1, rect2) {
+			return !(rect1.right < rect2.left || 
+					 rect1.left > rect2.right || 
+					 rect1.bottom < rect2.top ||
+					 rect1.top > rect2.bottom);
+		}
+		function launchSword() {
+    var sword = document.querySelector('.sword');
+    var enemy = document.querySelector('.enemy');
+    var player = document.querySelector('.player');
+    var swordPos = sword.getBoundingClientRect();
+    var enemyPos = enemy.getBoundingClientRect();
+    var playerPos = player.getBoundingClientRect();
+
+    var dx = enemyPos.x - playerPos.x;
+    var dy = enemyPos.y - playerPos.y;
+    var angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+    sword.style.transform = 'rotate(' + angle + 'deg)';
+    sword.style.left = playerPos.x + playerPos.width / 2 + 'px';
+    sword.style.top = playerPos.y + playerPos.height / 2 + 'px';
+    sword.style.display = 'block';
+
+    setTimeout(function() {
+        if (checkCollision(swordPos, enemyPos)) {
+            enemy.style.display = 'none';
+        }
+        sword.style.display = 'none';
+    }, 1000);
+}
+
+	</script>
+
+</body>
+</html>

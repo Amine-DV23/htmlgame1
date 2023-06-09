@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+#background {
+            width: 100%;
+            height: 100vh;
+            background-image: url(bbgg.gif);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            border-color: black;
+        }
+
+
+
+#player {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 70px;
+            left: 100px;
+            width: 80px;
+            height: 100px;
+            background-image: url(player1.gif);
+        }
+
+#player9 {
+        position: relative;
+			bottom: 0px;
+			left: 100px;				
+			width: 80px;
+	    height: 100px;
+      transform: scaleX(1);
+      background-size: 100% 100%;
+			}
+
+
+#moveLeftButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 40px;
+            width: 40px;
+            height: 40px;
+            background-image: url(left.png);
+        }
+
+#moveRightButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 100px;
+            width: 40px;
+            height: 40px;
+            background-image: url(right.png);
+        }
+
+#jumpButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 750px;
+            width: 40px;
+            height: 40px;
+            background-image: url(up.png);
+        }
+
+#fireButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 700px;
+            width: 40px;
+            height: 40px;
+            background-image: url(x.png);
+        }
+
+#tireButton {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 10px;
+            left: 650px;
+            width: 40px;
+            height: 40px;
+            background-image: url(w.png);
+        }
+
+
+
+
+
+
+#coin1 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('8.gif');
+		}
+
+#coin2 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('2.png');
+		}
+#coin3 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+            background-image: url('3.png');
+
+		}
+    
+#coin4 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('4.png');
+		}
+
+    
+#coin5 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('5.png');
+		}
+
+    
+#coin6 {
+    position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('6.png');
+		}
+
+    
+#coin7 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('7.png');
+		}
+
+    
+    
+#coin8 {
+						position: absolute;
+      background-size: 100% 100%;
+			top: -10px;
+      left: 350;
+			width: 30px;
+			height: 20px;
+      background-image: url('1.png');
+		}
+
+ 
+
+      #sword {
+			background-color:rgb(211, 124, 43) ;		
+			height: 6px;
+			width: 15px;
+			position: absolute;
+			bottom: 59px;
+			left: 50px;
+			border-radius: 50%;
+			display: none;
+            transition: left 0.5s; /* يُضاف هذا لتوفير حركة سلسة */
+
+			}
+
+      #sword2 {
+        background-image: url('bll.png');
+        bottom: -25px;
+        left: 50px;
+
+			height: 30px;
+			width: 60px;
+			position: absolute;
+      background-size: 100% 100%;
+      border-radius: 50%;
+
+			}
+
+
+      #box {
+             background-color: transparent;	
+	      	height: 6px;
+			width: 15px;
+			position: absolute;
+			bottom: 59px;
+			left: 50px;
+			border-radius: 50%;
+			display: none;
+			}
+
+
+
+
+#platform1 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 0px;
+            left: 0px;
+            width: 1550px;
+            height: 20px;
+            background-color: rgb(37, 180, 49);
+        }
+ 
+#platform2 {
+
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 100px;
+            left: 600px;
+            width: 150px;
+            height: 20px;
+            background-color: rgb(68, 24, 226);
+            }
+
+#platform3 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 200px;
+            left: 800px;
+            width: 150px;
+            height: 20px;
+            background-color: rgb(87, 83, 83);
+			}
+
+#platform4 {
+
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 100px;
+            left: 1000px;
+            width: 150px;
+            height: 20px;
+            background-color: rgb(209, 17, 17);
+
+            }
+
+
+#platform5 {
+
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 200px;
+            left: 1200px;
+            width: 150px;
+            height: 20px;
+            background-color: rgb(185, 174, 16);
+
+            }
+
+#platform6 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 100px;
+            left: 1300px;
+            width: 150px;
+            height: 20px;
+            background-color: rgb(255, 255, 255);
+
+            }
+
+#platform7 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 200px;
+            left: 400px;
+            width: 150px;
+            height: 20px;
+            background-color: rgb(27, 236, 243);
+
+            }
+
+#platform8 {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 100px;
+            left: 200px;
+            width: 150px;
+            height: 20px;
+            background-color: rgb(223, 36, 176);
+            } 
+
+
+
+                
+
+
+
+#enemy1 {
+            background-image: url('2.gif');
+                    position: absolute;
+            bottom: 500px;
+            background-size: 100% 100%;
+
+                    height: 80px;
+                    width: 135px;
+            
+
+                }
+
+#enemy2 {
+            background-image: url('0.gif');
+            position: absolute;
+                height: 100px;
+                width: 120px;
+                background-size: 100% 100%;
+
+        }
+
+
+#enemy3 {
+            background-image: url('000.gif');
+            position: absolute;
+            height: 300px;
+            left: 200;
+            width: 100px;
+            background-size: 100% 100%;
+            bottom: 80px;
+
+
+
+        }
+
+
+#enemy4 {
+            background-image: url('0.gif');
+                    position: absolute;
+            
+            background-size: 100% 100%;
+
+                    height: 100px;
+                    width: 130px;
+        
+                }
+
+
+
+#enemy5 {
+            background-image: url('5.gif');
+                    position: absolute;
+            bottom: 500px;
+            background-size: 100% 100%;
+
+            height: 100px;
+            width: 130px;
+            
+
+                }
+
+      
+#enemy6 {
+            background-image: url('000.gif');
+            position: relative;
+            bottom: 50px;
+            background-size: 100% 100%;
+            right: 100px;;
+            height: 300px;
+            width: 100px;
+            
+
+			}
+
+
+
+#enemy7 {
+            background-image: url('000.gif');
+            position: absolute;
+            height: 300px;
+            left: 200;
+            width: 100px;
+            background-size: 100% 100%;
+            bottom: 80px;
+
+
+
+        }
+
+
+
+
+			#game-stats {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: transparent;
+			padding: 10px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			font-family: Arial, sans-serif;
+			}
+
+			#game-stats span {
+			margin: 0 30px;
+			color: #fafafa;
+
+			}
+
+			#game-stats span span {
+			font-weight: bold;
+			color: #08c408;
+
+			}
+
+
+			#game-over-box {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 450px;
+			height: 331px;
+      background-image: url('gmovr.gif');
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+      background-size: 100% 100%;
+
+			}
+
+			#game-over-box h2 {
+			color: white;
+			font-size: 30px;
+			margin-bottom: 10px;
+			}
+
+			#game-over-box p {
+			color: white;
+			font-size: 20px;
+			margin-bottom: 20px;
+			}
+
+			#score {
+			font-weight: bold;
+			}
+
+			#restart-button {
+			background-color: white;
+			color: red;
+			font-size: 20px;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+			}
+
+
+			h2 {
+			color: rgb(247, 248, 253);
+      border-color: coral;
+			font-weight: bold;
+			font-size: 48px;
+			animation: fade-out 8s forwards;
+			position: absolute;
+			top: calc(50% - 100px);
+			left: 50%;
+			transform: translate(-50%, -200px);
+			}
+
+			@keyframes fade-out {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					display: none;
+					}
+			}
+
+			#you-win-box  {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 300px;
+			height: 160px;
+			background-color: #4CAF50;
+			border-radius: 10px;
+			padding: 20px;
+			text-align: center;
+			}
+
+			#you-win-box h3 {
+			color: white;
+			font-size: 30px;
+			margin-bottom: 10px;
+			}
+
+			#you-win-box p {
+			color: white;
+			font-size: 20px;
+			margin-bottom: 20px;
+			}
+
+			#score {
+			font-weight: bold;
+			}
+
+			#next-button {
+			background-color: white;
+			color: red;
+			font-size: 20px;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+			}
+
+			h3 {
+			color: rgb(6, 11, 92);
+			font-weight: bold;
+			font-size: 48px;
+			animation: fade-out 8s forwards;
+			position: absolute;
+			top: calc(50% - 100px);
+			left: 50%;
+			transform: translate(-50%, -200px);
+			}
+
+			@keyframes fade-out {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+					display: none;
+				}
+			}
+
+
+.health-bar {
+  width: 70px;
+  height: 6px;
+  background-color: rgb(238, 255, 7);
+  transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+
+
+
+#timer {
+            font-weight: bold;
+        }
+
+        #game-over-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            display: none;
+        }
+
+        #game-over-message {
+            color: white;
+            font-size: 72px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+
+
+
+    <div id="background">
+
+        <h2>STAGE 01</h2>
+
+
+        <div id="player">
+      
+            <div id="sword"></div>
+            <div id="box"></div>
+        </div> 
+
+
+        <div id="platform1">
+            <div id="coin1"></div>
+
+
+        </div>
+
+
+        <div id="platform2">
+
+            <div id="coin2"></div>
+
+        </div>
+
+
+        <div id="platform3">
+
+            <div id="coin3"></div>
+
+        </div>
+
+
+        <div id="platform4">
+
+            <div id="coin4"></div>
+
+        </div>
+
+
+        <div id="platform5">
+
+            <div id="coin5"></div>
+
+        </div>
+
+
+        <div id="platform6">
+
+            <div id="coin6"></div>
+
+        </div>
+
+
+        <div id="platform7">
+
+            <div id="coin7"></div>
+
+        </div>
+
+
+        <div id="platform8">
+
+            <div id="coin8"></div>
+
+        </div>
+
+
+
+
+
+
+        <audio id="audio1" src="game2.mp3"></audio>
+        <audio id="audio2" src="gn1.mp3"></audio>
+        <audio id="audio3" src="box.mp3"></audio>
+        <audio id="audio4" src="jump.mp3"></audio>
+
+        <audio id="audio5" src="mov.mp3"></audio>
+        <audio id="audio6" src="mov.mp3"></audio>
+   
+      
+        <img id="player9" src="player9.gif" style="display: none;">
+        <img id="coin9" src="coin9.gif" style="display: none;">
+
+
+        <div id="game-over-box">
+        <h2>Game Over</h2>
+        <p>Your score is <span id="score"></span></p>
+        <button id="restart-button">Restart</button>
+
+
+      </div>
+
+      <div id="you-win-box">
+
+        <h3>you win</h3>
+
+        <p>Your score is <span id="score"></span></p>
+
+        <button id="next-button" onclick="goToPage02()">next</button>	
+
+          <script>
+
+
+
+
+        function goToPage02() {
+          location.href = 'Page02.html';
+        }
+          </script>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div id="game-stats">
+
+
+
+
+        <span><img src="a1.PNG"> <span id="timer">30</span>Time:</span>
+
+        <span>coins<span id="coins-collected">0</span></span>
+
+        <span>Score<span id="enemies-killed">0</span></span>
+
+
+        <span><span id="lives">3</span>PL<img src="a2.PNG"></span>
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div id="moveLeftButton"></div>
+      <div id="moveRightButton"></div>
+      <div id="jumpButton"></div>
+      <div id="fireButton"></div>
+      <div id="tireButton"></div>
+
+
+
+
+
+      <div id="game-over-overlay">
+        <div id="game-over-message"></div>
+    </div>
+
+
+
+
+
+
+
+    </div>
+
+
+    <script>
+
+
+
+
+
+
+        // تحديد وقت العد التنازلي بالثواني
+        var countdown = 100;
+
+        var timerDisplay = document.getElementById('timer');
+        var gameOverOverlay = document.getElementById('game-over-overlay');
+        var gameOverMessage = document.getElementById('game-over-message');
+
+        // دالة تحديث وقت العد التنازلي
+        function updateTimer() {
+            timerDisplay.innerText = countdown;
+            countdown--;
+
+            // إذا وصل العد التنازلي إلى صفر
+            if (countdown < 0) {
+                clearInterval(timerInterval);
+                endGame();
+            }
+        }
+
+        // تحديث وقت العد التنازلي كل ثانية
+        var timerInterval = setInterval(updateTimer, 1000);
+
+        // دالة انتهاء اللعبة
+        function endGame() {
+          //  gameOverMessage.innerText = "time is over";
+          showGameOverBox();
+        
+        let playerRect = player.getBoundingClientRect();
+        let playerX = playerRect.left;
+        let playerY = playerRect.top;
+        
+        let player9 = document.getElementById("player9");
+        let player9Rect = player9.getBoundingClientRect();
+        let player9Width = player9Rect.width;
+        let player9Height = player9Rect.height;
+        
+        player.style.display = "none";
+              const audio = new Audio("player1.mp3"); // تحميل الصوت هنا
+              audio.play(); // تشغيل الصوت
+        player9.style.position = "absolute";
+        player9.style.display = "block";
+        player9.style.left = (playerX + player9Width/2) + "px";
+        player9.style.top = (playerY + player9Height/2) + "px";            gameOverOverlay.style.display = "flex";
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var isPlayerFlipped = false;
+
+
+var background = document.getElementById('background');
+
+var platform1 = document.getElementById('platform1');
+var platform2 = document.getElementById('platform2');
+var platform3 = document.getElementById('platform3');
+var platform4 = document.getElementById('platform4');
+var platform5 = document.getElementById('platform5');
+var platform6 = document.getElementById('platform6');
+var platform7 = document.getElementById('platform7');
+var platform8 = document.getElementById('platform8');
+
+var player = document.getElementById('player');
+
+var moveLeftButton = document.getElementById('moveLeftButton');
+var moveRightButton = document.getElementById('moveRightButton');
+var jumpButton = document.getElementById('jumpButton');
+var fireButton = document.getElementById('fireButton');
+var tireButton = document.getElementById('tireButton');
+
+var cameraPosition = 0;
+var currentPosition = 100;
+var screenWidth = window.innerWidth;
+
+// حساب السرعة الخاصة بالخلفية وتطبيقها على المنصات
+var backgroundSpeed = 1; // سرعة الخلفية
+
+var moveLeftInterval;
+var moveRightInterval;
+
+
+
+
+
+
+
+
+
+
+                    moveLeftButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند لمس الزر
+                        isFacingRight = false;
+                        player.style.backgroundImage = "url('player2.gif')";
+                        player.style.transform = 'scaleX(-1)';
+
+                        moveLeftInterval = setInterval(function() {
+                            if (currentPosition > 80) { // يسارا
+                                currentPosition -= 1; // زيادة القيمة إلى 1
+                                updateCamera();
+                            }
+                        }, 10);
+                    });
+
+                    moveRightButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند لمس الزر
+                        isFacingRight = true;
+                        player.style.backgroundImage = "url('player3.gif')";
+                        player.style.transform = 'scaleX(1)';
+
+                        moveRightInterval = setInterval(function() {
+                            if (currentPosition < 850) { // يمينا
+                                currentPosition += 1; // زيادة القيمة إلى 1
+                                updateCamera();
+                            }
+                        }, 10);
+                    });
+
+                    moveLeftButton.addEventListener('touchend', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند رفع اللمس عن الزر
+                        clearInterval(moveLeftInterval);
+
+                        if (!isFacingRight) {
+                            player.style.backgroundImage = "url('player1.gif')";
+
+                        }
+                    });
+
+                    moveRightButton.addEventListener('touchend', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند رفع اللمس عن الزر
+                        clearInterval(moveRightInterval);
+
+                        if (isFacingRight) {
+                            player.style.backgroundImage = "url('player1.gif')";
+                        }
+                    });
+
+
+
+
+
+
+
+
+
+
+
+
+                    var isJumping = false;
+
+                    function jump() {
+                        if (!isJumping) {
+                            isJumping = true;
+                            player.style.transition = 'bottom 0.5s'; // تحديد مدة الانتقال للأعلى
+                            player.style.bottom = '190px';
+
+                            // تغيير صورة اللاعب إلى الصورة المطلوبة أثناء القفز
+                            player.style.backgroundImage = "url('player4.png')";
+
+                            setTimeout(function() {
+                                player.style.transition = 'bottom 0.5s'; // تحديد مدة الانتقال للأسفل
+                                player.style.bottom = '70px';
+
+                                // تغيير صورة اللاعب إلى الصورة المطلوبة بعد النزول من القفز
+                                player.style.backgroundImage = "url('player5.png')";
+
+                                setTimeout(function() {
+                                    isJumping = false;
+                                    // استعادة صورة اللاعب الأصلية بعد الانتهاء من القفز
+                                    player.style.backgroundImage = "url('player1.gif')";
+                                }, 500); // انتظر 500 مللي ثانية قبل تعيين isJumping إلى false
+                            }, 500); // انتظر 500 مللي ثانية قبل النزول
+                        }
+                    }
+
+
+                    jumpButton.addEventListener('touchstart', function(event) {
+                        event.preventDefault(); // لمنع التمرير عند لمس الزر
+                        jump();
+                    });
+
+
+
+
+
+
+
+
+
+
+
+
+                    function updatePlatforms() {
+                        var platformPosition = cameraPosition * backgroundSpeed; // حساب موضع المنصات على الشاشة
+
+                        platform2.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform1.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform3.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform4.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform5.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform6.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform7.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+                        platform8.style.transform = 'translateX(' + platformPosition + 'px)'; // تحديث خاصية transform لتحريك المنصات
+
+                    }
+
+                    function updateCamera() {
+
+
+                        var playerPosition = 450 - currentPosition; // حساب موضع اللاعب على الشاشة
+                        cameraPosition = playerPosition - screenWidth / 2; // حساب موضع الكاميرا على الخلفية
+                        if (cameraPosition < -2255) {
+                            // الحد الأيسر للحركة
+                            cameraPosition = -2255;
+                        }
+                        if (cameraPosition > 0) {
+                            // الحد الأيمن للحركة
+                            cameraPosition = 0;
+                        }
+
+                        background.style.backgroundPosition = cameraPosition + 'px'; // تحديث خاصية backgroundPosition لتحريك الخلفية            
+                        updatePlatforms(); // تحديث المنصات
+                        player.style.left = currentPosition + 'px'; // تحديث خاصية left لتحريك اللاعب على الشاشة
+                    }
+
+                    setInterval(function() {
+                        updateCamera(); // تحديث الكاميرا بشكل مستمر
+                    }, 10);
+
+
+
+
+
+
+                    const audio1 = document.getElementById("audio1");
+                let isTouchStart1 = false;
+                let intervalId1 = null;
+
+                    audio1.currentTime = 0;
+                    audio1.play();
+
+
+
+
+                const audio2 = document.getElementById("audio2");
+                let isTouchStart2 = false;
+                let intervalId2 = null;
+
+                const button2 = document.getElementById("fireButton");
+
+                button2.addEventListener("touchstart", () => {
+                if (!isTouchStart2) {
+                    audio2.currentTime = 0;
+                    audio2.play();
+                    intervalId2 = setInterval(() => {
+                    audio2.currentTime = 0;
+                    audio2.play();
+                    }, audio2.duration * 1000);
+                    isTouchStart2 = true;
+                }
+                });
+
+                button2.addEventListener("touchend", () => {
+                if (isTouchStart2) {
+                    clearInterval(intervalId2);
+                    audio2.pause();
+                    intervalId2 = null;
+                    isTouchStart2 = false;
+                }
+                });
+
+
+
+                const audio3 = document.getElementById("audio3");
+                let isTouchStart3 = false;
+                let intervalId3 = null;
+
+                const button3 = document.getElementById("tireButton");
+
+                button3.addEventListener("touchstart", () => {
+                if (!isTouchStart3) {
+                    audio3.currentTime = 0;
+                    audio3.play();
+                    intervalId3 = setInterval(() => {
+                    audio3.currentTime = 0;
+                    audio3.play();
+                    }, audio3.duration * 1000);
+                    isTouchStart3 = true;
+                }
+                });
+
+                button3.addEventListener("touchend", () => {
+                if (isTouchStart3) {
+                    clearInterval(intervalId3);
+                    audio3.pause();
+                    intervalId3 = null;
+                    isTouchStart3 = false;
+                }
+                });
+
+                    
+                const audio4 = document.getElementById("audio4");
+                let isTouchStart4 = false;
+                let intervalId4 = null;
+
+                const button4 = document.getElementById("jumpButton");
+
+                button4.addEventListener("touchstart", () => {
+                if (!isTouchStart4) {
+                    audio4.currentTime = 0;
+                    audio4.play();
+                    intervalId4 = setInterval(() => {
+                    audio4.currentTime = 0;
+                    audio4.play();
+                    }, audio4.duration * 1000);
+                    isTouchStart4 = true;
+                }
+                });
+
+                button4.addEventListener("touchend", () => {
+                if (isTouchStart4) {
+                    clearInterval(intervalId4);
+                    audio4.pause();
+                    intervalId4 = null;
+                    isTouchStart4 = false;
+                }
+                });
+                        
+                        
+                const audio5 = document.getElementById("audio5");
+                let isTouchStart5 = false;
+                let intervalId5 = null;
+
+                const button5 = document.getElementById("moveRightButton");
+
+                button5.addEventListener("touchstart", () => {
+                if (!isTouchStart5) {
+                    audio5.currentTime = 0;
+                    audio5.play();
+                    intervalId5 = setInterval(() => {
+                    audio5.currentTime = 0;
+                    audio5.play();
+                    }, audio5.duration * 1000);
+                    isTouchStart5 = true;
+                }
+                });
+
+                button5.addEventListener("touchend", () => {
+                if (isTouchStart5) {
+                    clearInterval(intervalId5);
+                    audio5.pause();
+                    intervalId5 = null;
+                    isTouchStart5 = false;
+                }
+                });
+
+
+                const audio6 = document.getElementById("audio6");
+                let isTouchStart6 = false;
+                let intervalId6 = null;
+
+                const button6 = document.getElementById("moveLeftButton");
+
+                button6.addEventListener("touchstart", () => {
+                if (!isTouchStart6) {
+                    audio6.currentTime = 0;
+                    audio6.play();
+                    intervalId6 = setInterval(() => {
+                    audio6.currentTime = 0;
+                    audio6.play();
+                    }, audio6.duration * 1000);
+                    isTouchStart6 = true;
+                }
+                });
+
+                button6.addEventListener("touchend", () => {
+                if (isTouchStart6) {
+                    clearInterval(intervalId6);
+                    audio6.pause();
+                    intervalId6 = null;
+                    isTouchStart6 = false;
+                }
+                });
+                        
+                        
+
+
+
+
+        
+                const enemiesKilled = document.getElementById("enemies-killed");
+                const gameTime = document.getElementById("game-time");
+        
+                let lives = 3;
+                let killed = 0;
+                let time = 0;
+        
+        
+        
+                lives--;
+                document.getElementById("lives").textContent = lives;
+        
+        
+                const gameOverBox = document.getElementById("game-over-box");
+                const restartButton = document.getElementById("restart-button");
+                const scoreSpan = document.getElementById("score");
+                const showGameOverBox = () => {
+                scoreSpan.textContent = killed;
+                gameOverBox.style.display = "block";
+                clearInterval(intervalId);
+                };
+                // restart game when restart button is clicked
+                restartButton.addEventListener("click", () => {
+                window.location.reload();
+                });
+        
+        
+                const youWinBox = document.getElementById("you-win-box");
+                const nextButton = document.getElementById("next-button");
+                const showYouWinBox = () => {
+                scoreSpan.textContent = killed;
+                youWinBox.style.display = "block";
+                clearInterval(intervalId);
+                };
+                // restart game when restart button is clicked
+                nextButton.addEventListener("click", () => {
+                window.location.href = "page02.html";
+                });
+
+
+
+
+
+
+            var sword = document.getElementById("sword");
+            var fireButton = document.getElementById("fireButton");
+            var isSwordVisible = false; // حالة السيف: مرئي (true) أو غير مرئي (false)
+            var intervalId;
+
+            fireButton.addEventListener("touchstart", function() {
+        if (!isSwordVisible) {
+            isSwordVisible = true; // تحديث حالة السيف إلى مرئي
+
+            function launchSword() {
+            sword.style.display = "block"; // إظهار السيف
+            var playerPosition = document.getElementById("player").getBoundingClientRect();
+            var playerCenterX = playerPosition.left + playerPosition.width / 2;
+            sword.style.left = playerCenterX - sword.offsetWidth / 2 - playerPosition.left + "px"; // تحويله إلى الموضع الأفقي المطلوب
+            sword.style.transition = "none"; // تعطيل الانتقال الافتراضي
+
+            var distance = 800; // المسافة الكلية للانتقال
+            var speed = 10; // سرعة الحركة بالبكسلات في كل إطار
+            var currentPosition = 0; // الموقع الحالي للسيف
+
+            function moveSword() {
+                currentPosition += speed; // زيادة الموقع الحالي بمقدار السرعة
+
+                // التحقق من الانتهاء من الانتقال
+                if (currentPosition >= distance) {
+                    sword.style.display = "none"; // إخفاء السيف عند الانتهاء
+                    isSwordVisible = false; // تحديث حالة السيف إلى غير مرئي
+                } else {
+                    sword.style.left = currentPosition + "px"; // تحديث موقع السيف
+                    requestAnimationFrame(moveSword); // استدعاء الدالة في الإطار التالي للحركة المستمرة
+                }
+                }
+
+                moveSword(); // بدء الحركة
+            }
+
+            intervalId = setInterval(launchSword, 800); // تكرار إطلاق السيوف بفارق زمني 0.5 ثانية
+             }
+            });
+
+            fireButton.addEventListener("touchend", function() {
+                isSwordVisible = false; // تحديث حالة السيف إلى غير مرئي عند رفع الإصبع
+                clearInterval(intervalId); // إيقاف تكرار إطلاق السيوف
+            });
+
+
+
+                
+                
+                
+                
+                
+
+
+
+            var box = document.getElementById("box");
+            var fireButton = document.getElementById("tireButton");
+            var isBoxVisible = false; // حالة السيف: مرئي (true) أو غير مرئي (false)
+            var intervalId;
+
+            fireButton.addEventListener("touchstart", function() {
+        if (!isBoxVisible) {
+            isBoxVisible = true; // تحديث حالة السيف إلى مرئي
+
+            function launchBox() {
+            box.style.display = "block"; // إظهار السيف
+            var playerPosition = document.getElementById("player").getBoundingClientRect();
+            var playerCenterX = playerPosition.left + playerPosition.width / 2;
+            box.style.left = playerCenterX - box.offsetWidth / 2 - playerPosition.left + "px"; // تحويله إلى الموضع الأفقي المطلوب
+            box.style.transition = "none"; // تعطيل الانتقال الافتراضي
+
+            var distance = 80; // المسافة الكلية للانتقال
+            var speed = 10; // سرعة الحركة بالبكسلات في كل إطار
+            var currentPosition = 0; // الموقع الحالي للسيف
+
+            function moveBox() {
+                currentPosition += speed; // زيادة الموقع الحالي بمقدار السرعة
+
+                // التحقق من الانتهاء من الانتقال
+                if (currentPosition >= distance) {
+                    box.style.display = "none"; // إخفاء السيف عند الانتهاء
+                    isBoxVisible = false; // تحديث حالة السيف إلى غير مرئي
+                } else {
+                    box.style.left = currentPosition + "px"; // تحديث موقع السيف
+                    requestAnimationFrame(moveBox); // استدعاء الدالة في الإطار التالي للحركة المستمرة
+                }
+                }
+
+                moveBox(); // بدء الحركة
+            }
+
+            intervalId = setInterval(launchBox, 180); // تكرار إطلاق السيوف بفارق زمني 0.5 ثانية
+             }
+            });
+
+            fireButton.addEventListener("touchend", function() {
+                isBoxVisible = false; // تحديث حالة السيف إلى غير مرئي عند رفع الإصبع
+                clearInterval(intervalId); // إيقاف تكرار إطلاق السيوف
+            });
+
+
+
+            
+
+
+
+
+
+
+
+
+
+                
+                
+                
+                
+                
+                let fireInterval; // متغير لحفظ المؤقت الذي يقوم بتنفيذ الاطلاق المستمر
+
+                document.getElementById("fireButton").addEventListener("touchstart", () => {
+    if (!isFiring) {
+        isFiring = true;
+        fireInterval = setInterval(fire, 300); // تحديد فاصل زمني لتنفيذ الاطلاق المستمر
+        fireSword(); // استدعاء دالة fireSword لعرض السيف
+    }
+});
+
+document.getElementById("fireButton").addEventListener("touchend", () => {
+    if (isFiring) {
+        isFiring = false;
+        clearInterval(fireInterval); // إلغاء التكرار عند رفع الإصبع عن الزر
+        currentPlayer = 1;
+        player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+    }
+});
+
+
+               var isFiring = false;
+
+                  function fire() {
+                 currentPlayer = 6; // تحديد اللاعب السادس كلاعب حالي عند الضغط على الزر
+
+                  // تحديث صورة اللاعب وفقًا للاعب الحالي
+                  player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+                 }
+
+
+
+
+                    let tireInterval; // متغير لحفظ المؤقت الذي يقوم بتنفيذ الاطلاق المستمر
+
+                    document.getElementById("tireButton").addEventListener("touchstart", () => {
+                        if (!isFiring) {
+                            isFiring = true;
+                            tireInterval = setInterval(tire, 300); // تحديد فاصل زمني لتنفيذ الاطلاق المستمر
+                        }
+                    });
+
+                    document.getElementById("tireButton").addEventListener("touchend", () => {
+                        if (isFiring) {
+                            isFiring = false;
+                            clearInterval(tireInterval); // إلغاء التكرار عند رفع الإصبع عن الزر
+                            currentPlayer = 1;
+                            player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+                        }
+                    });
+
+                    var isFiring = false;
+
+                    function tire() {
+                        currentPlayer = 10; // تحديد اللاعب السادس كلاعب حالي عند الضغط على الزر
+
+                        // تحديث صورة اللاعب وفقًا للاعب الحالي
+                        player.style.backgroundImage = "url(player" + currentPlayer + ".gif)";
+                    }
+                    
+                    
+
+
+        
+        
+        
+          
+        
+        
+        
+        
+        
+        
+          function checkCollision4() {
+        
+        
+        
+            if (isColliding2(player, coin1)) {
+              const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+              audio.play(); // تشغيل الصوت
+            coin1.style.display = "none";
+            coinsCollected++;
+            document.getElementById("coins-collected").innerHTML = coinsCollected;
+        
+           // تحديث حالة اللاعب للموت
+            // الشفرة الأخرى هنا
+        } else if (isColliding2(player, coin2)) {
+            const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+              audio.play(); // تشغيل الصوت
+            coin2.style.display = "none";
+            coinsCollected++;
+            document.getElementById("coins-collected").innerHTML = coinsCollected;
+        
+           // تحديث حالة اللاعب للموت
+            // الشفرة الأخرى هنا
+        } else if (isColliding2(player, coin3)) {
+            const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+              audio.play(); // تشغيل الصوت
+            coin3.style.display = "none";
+            coinsCollected++;
+            document.getElementById("coins-collected").innerHTML = coinsCollected;
+        
+
+            // تحديث حالة اللاعب للموت
+            // الشفرة الأخرى هنا
+          } else if (isColliding2(player, coin4)) {
+            const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+              audio.play(); // تشغيل الصوت
+            coin4.style.display = "none";
+            coinsCollected++;
+            document.getElementById("coins-collected").innerHTML = coinsCollected;
+        
+            // تحديث حالة اللاعب للموت
+            // الشفرة الأخرى هنا
+          } else if (isColliding2(player, coin5)) {
+            const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+              audio.play(); // تشغيل الصوت
+            coin5.style.display = "none";
+            coinsCollected++;
+            document.getElementById("coins-collected").innerHTML = coinsCollected;
+        
+            // تحديث حالة اللاعب للموت
+            // الشفرة الأخرى هنا
+          } else if (isColliding2(player, coin6)) {
+                
+            const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+              audio.play(); // تشغيل الصوت
+            coin6.style.display = "none";
+            coinsCollected++;
+            document.getElementById("coins-collected").innerHTML = coinsCollected;
+        
+            // تحديث حالة اللاعب للموت
+            // الشفرة الأخرى هنا
+          } else if (isColliding2(player, coin7)) {
+            const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+              audio.play(); // تشغيل الصوت
+        coin7.style.display = "none";
+        coinsCollected++;    // تحديث حالة اللاعب للموت
+            // الشفرة الأخرى هنا
+          
+              // تحديث حالة اللاعب للموت
+        document.getElementById("coins-collected").innerHTML = coinsCollected;
+        
+        
+            
+
+        } else if (isColliding2(player, coin8)) {
+            const audio = new Audio("mos.mp3"); // تحميل الصوت هنا
+              audio.play(); // تشغيل الصوت
+        coin8.style.display = "none";
+        coinsCollected++;    // تحديث حالة اللاعب للموت
+            // الشفرة الأخرى هنا
+          
+              // تحديث حالة اللاعب للموت
+        document.getElementById("coins-collected").innerHTML = coinsCollected;
+        
+    
+            
+    }{
+        
+        
+        
+        
+        let playerRect = player.getBoundingClientRect();
+        let playerX = playerRect.left;
+        let playerY = playerRect.top;
+        
+        let coin1 = document.getElementById("coin1");
+        let coin2 = document.getElementById("coin2");
+        let coin3 = document.getElementById("coin3");
+        let coin4 = document.getElementById("coin4");
+        let coin5 = document.getElementById("coin5");
+        let coin6 = document.getElementById("coin6");
+        let coin7 = document.getElementById("coin7");
+        let coin8 = document.getElementById("coin8");
+        
+        
+        let coin9Rect = coin9.getBoundingClientRect();
+        let coin9Width = coin9Rect.width;
+        let coin9Height = coin9Rect.height;
+        
+        coin.style.display = "none";
+           
+        coin9.style.position = "absolute";
+        coin9.style.display = "block";
+        coin9.style.left = (playerX + coin9Width/2) + "px";
+        coin9.style.top = (playerY + coin9Height/2) + "px";
+        
+        setTimeout(function() {
+          coin9.style.display = "none";
+        }, 5000);
+            
+        
+        }		}    
+          
+        
+        
+          // تابع للتحقق من الاصطدام بين عنصرين
+          function isColliding2(element1, element2) {
+            var element1Rect = element1.getBoundingClientRect();
+            var element2Rect = element2.getBoundingClientRect();
+        
+            return !(
+              element1Rect.bottom < element2Rect.top ||
+              element1Rect.top > element2Rect.bottom ||
+              element1Rect.right < element2Rect.left ||
+              element1Rect.left > element2Rect.right
+            );
+          }
+        
+          // استدعاء التابع checkCollision كل ثانية للتحقق من حدوث اصطدام
+          setInterval(checkCollision4, 500);
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 </script>
+</body>
+</html>

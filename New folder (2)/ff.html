@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+#background {
+            width: 100%;
+            height: 100vh;
+            background-image: url(bbgg.gif);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            border-color: black;
+        }
+
+        #player {
+            position: absolute;
+            background-size: 100% 100%;
+            bottom: 50px;
+            left: 100px;
+            width: 70px;
+            height: 90px;
+            background-image: url(player1.gif);
+        }
+
+
+#enemy1 {
+            background-image: url('33.gif');
+                    position: absolute;
+            bottom: 100px;
+            background-size: 100% 100%;
+
+                    height: 280px;
+                    width: 100px;
+            
+
+                }
+
+
+    #sword {
+      width: 10px;
+      height: 10px;
+      background-color: rgb(255, 4, 4);
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      transition: left 0.5s linear;
+    }
+
+    #health {
+      width: 100px;
+      height: 10px;
+      background: linear-gradient(to left, red, yellow);
+      position: absolute;
+      transform: translateY(-50%);
+      transition: right 1s linear;
+    }
+
+
+  </style>
+</head>
+<body>
+
+    
+
+    <div id="background">
+
+   
+  <div id="enemy">
+    <div id="health"></div>
+  </div>
+
+  <div id="player">
+    <div id="sword"></div>
+  </div>
+
+  <div id="fireButton">اطلاق النار</div>
+
+
+
+</div>
+
+
+<script>
+    var swordHits = 0;
+    var sword = document.getElementById("sword");
+    var health = document.getElementById("health");
+    var isSwordMoving = false;
+
+    function swordAttack() {
+  if (!isSwordMoving) {
+    swordHits++;
+    isSwordMoving = true;
+
+    var swordPos = parseInt(sword.style.left) || 10;
+    var healthPos = parseInt(health.style.right) || 10;
+    var distance = healthPos - swordPos;
+    var moveStep = 1; // تسريع السيف
+
+    if (distance > 0) {
+      sword.style.left = (swordPos + moveStep) + "px";
+    } else if (distance < 0) {
+      sword.style.left = (swordPos - moveStep) + "px";
+    }
+
+    if (swordHits >= 10) {
+      health.style.right = "10px";
+    } else {
+      var colorValue = Math.floor((swordHits / 10) * 100);
+      health.style.right = (10 + (swordHits * 10)) + "px";
+      health.style.background = `linear-gradient(to left, red ${colorValue}%, yellow)`;
+    }
+
+    if (swordHits >= 10) {
+      alert("لقد قتلت العدو!");
+    }
+
+    setTimeout(function() {
+      isSwordMoving = false;
+    }, 100);
+
+    // تحريك السيف نحو العدو بلمسة واحدة
+    var enemy = document.getElementById("enemy");
+    var enemyLeft = enemy.offsetLeft;
+    var enemyWidth = enemy.offsetWidth;
+    var swordWidth = sword.offsetWidth;
+    var swordMoveDistance = enemyLeft - swordPos + enemyWidth - swordWidth;
+
+    sword.style.transitionDuration = (swordMoveDistance / moveStep) + "ms";
+    sword.style.left = (swordPos + swordMoveDistance) + "px";
+
+    // اخفاء السيف عند التصادم مع العدو
+// اخفاء السيف عند التصادم مع العدو
+var swordRect = sword.getBoundingClientRect();
+var enemyRect = enemy.getBoundingClientRect();
+
+if (swordRect.right >= enemyRect.left && swordRect.left <= enemyRect.right) {
+  sword.style.opacity = 0;
+  sword.style.display = "none";
+
+}
+
+  }
+}
+
+
+
+
+    var fireButton = document.getElementById("fireButton");
+    fireButton.addEventListener("touchstart", swordAttack);
+  </script>
+</body>
+</html>

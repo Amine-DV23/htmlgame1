@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>لعبة اللاعب الذي يتحرك يميناً ويساراً باستخدام أسهم المفاتيح</title>
+</head>
+<body>
+
+<h1>لعبة اللاعب الذي يتحرك يميناً ويساراً باستخدام أسهم المفاتيح</h1>
+
+<p>استخدم الأسهم لتحريك اللاعب:</p>
+
+<div style="border: 1px solid black; width: 400px; height: 300px;">
+	<div id="player" style="position: relative; width: 50px; height: 50px; background-color: red; left: 0;"></div>
+	<div id="coin1" style="position: absolute; width: 20px; height: 20px; background-color: yellow; top: 50px; left: 100px;"></div>
+	<div id="coin2" style="position: absolute; width: 20px; height: 20px; background-color: yellow; top: 150px; left: 250px;"></div>
+</div>
+
+<script>
+	// تحديد متغيرات اللاعب والنقود
+	var player = document.getElementById("player");
+	var coin1 = document.getElementById("coin1");
+	var coin2 = document.getElementById("coin2");
+	
+	// تحديد متغيرات الحركة
+	var moveRight = false;
+	var moveLeft = false;
+	var playerSpeed = 5;
+	
+	// الحركة
+	function movePlayer() {
+		if (moveRight && player.offsetLeft < 350) {
+			player.style.left = (player.offsetLeft + playerSpeed) + "px";
+		}
+		if (moveLeft && player.offsetLeft > 0) {
+			player.style.left = (player.offsetLeft - playerSpeed) + "px";
+		}
+		
+		// الكشف عن اصطدام اللاعب بالنقود
+		if (detectCollision(player, coin1)) {
+			coin1.style.display = "none";
+		}
+		if (detectCollision(player, coin2)) {
+			coin2.style.display = "none";
+		}
+	}
+	
+	// الكشف عن اصطدام الكائنين
+	function detectCollision(object1, object2) {
+		var object1Rect = object1.getBoundingClientRect();
+		var object2Rect = object2.getBoundingClientRect();
+		
+		return !(
+			object1Rect.bottom < object2Rect.top || 
+			object1Rect.top > object2Rect.bottom || 
+			object1Rect.right < object2Rect.left || 
+			object1Rect.left > object2Rect.right
+		);
+	}
+	
+	// التحكم بالأسهم
+	document.addEventListener("keydown", function(event) {
+		if (event.code === "ArrowRight") {
+			moveRight = true;
+		}
+		if (event.code === "ArrowLeft") {
+			moveLeft = true;
+		}
+	});
+	
+	document.addEventListener("keyup", function(event) {
+		if (event.code === "ArrowRight") {
+			moveRight = false;
+		}
+
+
+		if (event.code === "ArrowLeft") {
+			moveLeft = false;
+		}
+	});
+	
+	// دورة اللعبة
+	setInterval(movePlayer, 10);
+</script>
+</body>
+</html>
